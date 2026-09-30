@@ -161,3 +161,46 @@
   .s-pratos__sal { width: 78vw; height: auto; justify-self: end; margin-right: calc(-1 * var(--gutter)); }
   .s-pratos__sal img { height: auto; aspect-ratio: 4 / 5; }
 }
+
+/* ============ 04 BEBIDAS + AVALIAÇÕES ============ */
+.s-bebidas {
+  position: relative;
+  height: 43.4vw; min-height: 32rem;
+  overflow: clip;
+}
+.s-bebidas__drinks { position: absolute; inset: 0 auto 0 0; width: 58%; z-index: 2; }
+.s-bebidas__drinks img { position: absolute; bottom: -24%; height: auto; }
+.s-bebidas__verde { left: 3%; width: 60%; }
+.s-bebidas__vermelho { left: 47%; width: 47%; bottom: -26%; }
+.s-bebidas__reviews {
+  position: absolute; z-index: 2;
+  left: 59%; right: var(--gutter); top: 24%;
+  display: grid; row-gap: var(--sp-5);
+  --fs-quote: clamp(1.0625rem, 0.7rem + 1.05vw, 1.625rem);
+}
+.s-bebidas__nota {
+  justify-self: start;
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  border: var(--stroke) solid var(--tinta); border-radius: var(--radius-pill);
+  padding: var(--sp-1) var(--sp-4);
+  font-size: var(--fs-quote);
+}
+.s-bebidas__nota strong { font-weight: 600; font-variant-numeric: tabular-nums; }
+.s-bebidas__estrela { width: 1.05em; height: 1.05em; fill: var(--ambar); stroke: var(--madeira-escura); stroke-width: 1.2; stroke-linejoin: round; }
+.s-bebidas__quote blockquote { position: relative; padding-left: 1.1em; font-size: var(--fs-quote); line-height: 1.35; }
+.s-bebidas__quote blockquote::before, .s-bebidas__quote blockquote p::after {
+  font-family: var(--font-display); font-weight: 700; color: var(--tinta);
+}
+.s-bebidas__quote blockquote::before { content: "“"; position: absolute; left: 0; top: -.05em; }
+.s-bebidas__quote blockquote p::after { content: "”"; margin-left: .1em; }
+.s-bebidas__quote figcaption { margin-top: var(--sp-1); padding-left: calc(var(--fs-quote) * 1.1); font-size: var(--fs-meta); color: var(--texto-meta); }
+
+@media (max-width: 47.99rem) {
+  .s-bebidas { height: auto; min-height: 0; display: grid; overflow: visible; }
+  .s-bebidas__reviews { position: relative; inset: auto; order: -1; padding: var(--sp-6) var(--gutter) var(--sp-5); padding-left: calc(var(--gutter) + 14vw); }
+  .s-bebidas__drinks { position: relative; width: 100%; height: 72vw; overflow: clip; }
+  .s-bebidas__drinks img { bottom: -12%; }
+  .s-bebidas__verde { left: 6%; width: 50%; }
+  .s-bebidas__vermelho { left: 54%; width: 39%; bottom: -14%; }
+  .s-bebidas__nota { white-space: nowrap; font-size: var(--fs-body); }
+}
