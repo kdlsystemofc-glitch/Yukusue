@@ -45,6 +45,8 @@
   --sp-8: clamp(4rem, 2.5rem + 7.5vw, 9rem);
   --gutter: clamp(1rem, 5.9vw, 5.25rem);
   --max: 90rem;
+  /* "vw com teto": acima de 1600px de tela a composição para de crescer (imagens geradas têm ~1000px) */
+  --vw: min(1vw, 16px);
 
   /* Sistema de luz único (AUDITORIA.md): luz de cima-esquerda, sombra para baixo-direita, tom aço */
   --sombra-contato: drop-shadow(0.25rem 0.35rem 0.25rem rgb(69 94 114 / .35));

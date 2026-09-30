@@ -1,8 +1,9 @@
 /* Reset + base + grid. Sem sombras padrão, sem fontes de sistema proibidas. */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
-html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; color-scheme: light; }
 body {
+  min-height: 100vh; /* fallback */
   min-height: 100svh;
   background: var(--gelo-50);
   color: var(--tinta);
@@ -11,6 +12,7 @@ body {
   line-height: var(--lh-body);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: hidden; /* fallback Safari < 16 */
   overflow-x: clip;
 }
 img, svg, picture { display: block; max-width: 100%; }
