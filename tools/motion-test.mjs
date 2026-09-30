@@ -140,8 +140,13 @@ for (const vp of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
       const y = await p.evaluate(sel => { const sec = document.querySelector(sel); const el = sec.querySelector("[data-parallax]:not([data-parallax-mode])") || sec;
         const r = el.getBoundingClientRect(); return Math.max(0, r.top + scrollY + r.height / 2 - innerHeight / 2); }, sel);
       if (s === "hero") await p.evaluate(() => scrollTo(0, 0));
-      else { tag === "motion" ? await rolarPara(p, y - 400) : 0; await pausa(tag === "motion" ? 200 : 0); tag === "motion" ? await rolarPara(p, y) : await p.evaluate(y => scrollTo(0, y), y); }
+      else { if (tag === "motion") { const fim = await p.evaluate(sel => { const r = document.querySelector(sel).getBoundingClientRect(); return r.bottom + scrollY - innerHeight * 0.5; }, sel);
+          for (let k = 0; k <= 4; k++) { await rolarPara(p, y - 400 + (fim - y + 400) * k / 4); await pausa(350); } await pausa(900); }
+        tag === "motion" ? await rolarPara(p, y - 400) : 0; await pausa(tag === "motion" ? 200 : 0); tag === "motion" ? await rolarPara(p, y) : await p.evaluate(y => scrollTo(0, y), y); }
       await pausa(tag === "motion" ? 1600 : 100);
+      if (tag === "motion") await p.evaluate(sel => { // isola a seção: parallax de vizinhas que transbordam volta a 0
+        const sec = document.querySelector(sel);
+        window.YMotion.parallax.forEach(P => { if (!sec.contains(P.el)) { P.st.disable(false); window.gsap.set(P.el, { yPercent: 0 }); } }); }, sel);
       await p.locator(sel).screenshot({ path: join(OUT, `${s}-${vp.width}-${tag}.png`) });
     }
     pares.push([`${s}-${vp.width}`, join(OUT, `${s}-${vp.width}-estatico.png`), join(OUT, `${s}-${vp.width}-motion.png`)]);
