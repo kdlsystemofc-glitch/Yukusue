@@ -11,7 +11,7 @@
  *  - Qualidade (html[data-quality]): high | low (low: sem loops, parallax pela metade, sem Lenis).
  *
  * Atributos:
- *  data-reveal[="up|fade|left|right"]   entrada ao atingir 35% de visibilidade
+ *  data-reveal[="up|fade|left|right|zoom"]  entrada ao atingir 35% de visibilidade
  *  data-reveal-group="nome"             itens do grupo que entram juntos são defasados
  *  data-reveal-delay="0.2"              atraso extra (s)
  *  data-parallax="0.08"                 fator 0,05–0,10; deslocamento máx. 24px; 0 no centro da tela
@@ -43,8 +43,9 @@
 
   /* ---------------------------------------------------------------- reveal */
   var FROM = {
-    up: { y: 32, x: 0 }, fade: { y: 0, x: 0 },
-    left: { x: -40, y: 0 }, right: { x: 40, y: 0 }
+    up: { y: 32, x: 0, scale: 1 }, fade: { y: 0, x: 0, scale: 1 },
+    left: { x: -40, y: 0, scale: 1 }, right: { x: 40, y: 0, scale: 1 },
+    zoom: { x: 0, y: 0, scale: 1.06 }
   };
   var reveals = Array.prototype.slice.call(document.querySelectorAll("[data-reveal]"));
 
@@ -53,7 +54,7 @@
     el.__revealed = true;
     var delay = parseFloat(el.dataset.revealDelay || 0) + (el.__stagger || 0);
     if (instant || state.userPaused) {
-      gsap.set(el, { opacity: 1, x: 0, y: 0 });
+      gsap.set(el, { opacity: 1, x: 0, y: 0, scale: 1 });
       startLoop(el);
       return;
     }
@@ -63,7 +64,7 @@
     }
     var dur = 0.6 + Math.min(0.3, (el.offsetHeight || 0) / 2000); // 600–900ms: peças maiores, mais lentas
     gsap.to(el, {
-      opacity: 1, x: 0, y: 0, duration: dur, delay: delay, ease: EASE, overwrite: "auto",
+      opacity: 1, x: 0, y: 0, scale: 1, duration: el.dataset.reveal === "zoom" ? 1.1 : dur, delay: delay, ease: EASE, overwrite: "auto",
       onComplete: function () { startLoop(el); }
     });
   }
@@ -74,7 +75,7 @@
     var r = el.getBoundingClientRect();
     if (r.top >= window.innerHeight && !state.userPaused) {
       var f = FROM[el.dataset.reveal] || FROM.up;
-      gsap.set(el, mode === "reduced" ? { opacity: 0 } : { opacity: 0, x: f.x, y: f.y });
+      gsap.set(el, mode === "reduced" ? { opacity: 0 } : { opacity: 0, x: f.x, y: f.y, scale: f.scale });
       el.__hidden = true;
       state.reveals.push(el);
     } else {
@@ -125,12 +126,13 @@
       var exit = el.dataset.parallaxMode === "exit";
       // yPercent é um canal separado do "y" usado pela entrada e pela flutuação: não brigam.
       var setY = function (px) { var h = el.offsetHeight || 1; gsap.set(el, { yPercent: px / h * 100 }); };
+      var trig = exit ? (el.closest("section") || el) : el;   // saída: conta desde o 1º pixel de rolagem da seção
       var st = ST.create({
-        trigger: el,
+        trigger: trig,
         start: exit ? "top top" : "top bottom",
         end: "bottom top",
         onUpdate: function (self) {
-          var span = exit ? el.offsetHeight : window.innerHeight + el.offsetHeight;
+          var span = exit ? trig.offsetHeight : window.innerHeight + el.offsetHeight;
           var d = exit ? self.progress * span : (self.progress - 0.5) * span;
           setY(-Math.max(-MAXPX, Math.min(MAXPX, d * f)));
         }
