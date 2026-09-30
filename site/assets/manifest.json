@@ -1,0 +1,90 @@
+{
+  "logo-yukusue": [
+    {
+      "file": "logo-yukusue-146.png",
+      "w": 146,
+      "h": 40
+    }
+  ],
+  "hero-temaki": [
+    {
+      "file": "hero-temaki-699.webp",
+      "w": 699,
+      "h": 898
+    }
+  ],
+  "hero-salmao": [
+    {
+      "file": "hero-salmao-800.webp",
+      "w": 800,
+      "h": 691
+    },
+    {
+      "file": "hero-salmao-1057.webp",
+      "w": 1057,
+      "h": 913
+    }
+  ],
+  "prato-ceviche": [
+    {
+      "file": "prato-ceviche-800.webp",
+      "w": 800,
+      "h": 679
+    },
+    {
+      "file": "prato-ceviche-1320.webp",
+      "w": 1320,
+      "h": 1120
+    }
+  ],
+  "prato-sashimi-sal": [
+    {
+      "file": "prato-sashimi-sal-800.webp",
+      "w": 800,
+      "h": 1067
+    },
+    {
+      "file": "prato-sashimi-sal-1440.webp",
+      "w": 1440,
+      "h": 1920
+    }
+  ],
+  "drink-verde": [
+    {
+      "file": "drink-verde-616.webp",
+      "w": 616,
+      "h": 737
+    }
+  ],
+  "drink-vermelho": [
+    {
+      "file": "drink-vermelho-481.webp",
+      "w": 481,
+      "h": 665
+    }
+  ],
+  "salao": [
+    {
+      "file": "salao-800.webp",
+      "w": 800,
+      "h": 715
+    },
+    {
+      "file": "salao-1320.webp",
+      "w": 1320,
+      "h": 1180
+    }
+  ],
+  "plate-gelo": [
+    {
+      "file": "plate-gelo-800.webp",
+      "w": 800,
+      "h": 447
+    },
+    {
+      "file": "plate-gelo-1376.webp",
+      "w": 1376,
+      "h": 768
+    }
+  ]
+}
