@@ -30,3 +30,9 @@ largura nativa (nunca ampliamos por reamostragem).
 
 ## Não usadas (reserva)
 imgi_14, imgi_21, imgi_30, imgi_31, imgi_43, imgi_46, imgi_51, imgi_52, imgi_54.
+
+## Tratamento de integração (caminho A, sem pixel novo)
+Todas as fotos reais passam por `grade()` (balanço de branco e exposição) e os recortes por `acabamento()` (borda suavizada e light wrap). Os nomes dos arquivos mudaram para `<nome>-800.webp` e `<nome>.webp`.
+
+## Caminho B — versões "estúdio" (IA)
+Arquivos em `imagens/estudio/`. Quando existirem, substituem o recorte correspondente. **Todos: recriada por IA — confirmar com o cliente antes de publicar.** Nenhum foi entregue ainda.

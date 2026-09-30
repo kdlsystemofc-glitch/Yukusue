@@ -332,3 +332,23 @@ Ajustes técnicos feitos sozinho:
 - Fita de água: SVG com refração (feDisplacementMap) e brilho especular; os tracejados saíram. Bambu com degradê por folha e colmo cilíndrico. Cores do bambu amostradas do mockup (#719325).
 - Limites que continuam: a comida é a real (regra de ouro). A seção 05 segue sem foto de entrada/fachada. Fita e bambu continuam ilustrados; para ficarem fotográficos como no mockup, é preciso gerar os plates PLATE-02 e PLATE-03.
 - Atualização: PLATE-02 (fita de água) e PLATE-03 (bambu) entregues e aplicados no lugar dos SVGs (que ficam em `site/svg/` como alternativa). O recorte é por diferença de cor em relação ao fundo liso, o que preserva a transparência. A fita não se move e só recebe máscara na própria imagem.
+
+## l) Integração A + B (2026-09-30)
+**Autorização:** o usuário autorizou o caminho B (AUDITORIA.md): fotos reais refeitas por IA com fundo e luz de estúdio, com o prato idêntico. É uma exceção pontual à regra de ouro. Cada arquivo vai para `imagens/estudio/` e fica marcado em assets.md como "recriada por IA — confirmar com o cliente antes de publicar".
+
+**A aplicado (sem IA):**
+- Correção de cor e exposição de todas as fotos no pipeline (alvo medido no mockup).
+- Light wrap e borda suavizada nos recortes.
+- Sistema de luz único (`--sombra-contato`, `--sombra-projetada`): luz de cima-esquerda.
+- Perspectiva: salmão e tigela inclinados para o plano de ~30°. O temaki perdeu o giro "impossível".
+- A aresta do gelo passa na frente da base da comida.
+- As legendas soltas viraram `sr-only`, e o texto continua no HTML.
+- Seção 05: o salão virou atmosfera desfocada e o fundo cinza do logo foi removido.
+
+**B — slots que trocam sozinhos** quando o arquivo existir (rodar `python tools/build_assets.py`):
+| Arquivo esperado | Foto real a anexar |
+|---|---|
+| `imagens/estudio/temaki.png` | imgi_47 |
+| `imagens/estudio/salmao.png` | imgi_57 |
+| `imagens/estudio/ceviche.png` | imgi_45 |
+| `imagens/estudio/pedra-sal.png` | imgi_27 |

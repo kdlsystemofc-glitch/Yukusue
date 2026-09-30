@@ -8,7 +8,12 @@
   ],
   "hero-temaki": [
     {
-      "file": "hero-temaki-699.webp",
+      "file": "hero-temaki-800.webp",
+      "w": 699,
+      "h": 898
+    },
+    {
+      "file": "hero-temaki.webp",
       "w": 699,
       "h": 898
     }
@@ -20,7 +25,7 @@
       "h": 691
     },
     {
-      "file": "hero-salmao-1057.webp",
+      "file": "hero-salmao.webp",
       "w": 1057,
       "h": 913
     }
@@ -32,54 +37,45 @@
       "h": 679
     },
     {
-      "file": "prato-ceviche-1320.webp",
+      "file": "prato-ceviche.webp",
       "w": 1320,
       "h": 1120
     }
   ],
-  "prato-sashimi-sal": [
-    {
-      "file": "prato-sashimi-sal-800.webp",
-      "w": 800,
-      "h": 1067
-    },
-    {
-      "file": "prato-sashimi-sal-1440.webp",
-      "w": 1440,
-      "h": 1920
-    }
-  ],
   "prato-sal-recorte": [
     {
-      "file": "prato-sal-recorte-456.webp",
-      "w": 456,
-      "h": 636
+      "file": "prato-sal-recorte-800.webp",
+      "w": 451,
+      "h": 632
+    },
+    {
+      "file": "prato-sal-recorte.webp",
+      "w": 451,
+      "h": 632
     }
   ],
   "drink-verde": [
     {
-      "file": "drink-verde-616.webp",
+      "file": "drink-verde-800.webp",
+      "w": 616,
+      "h": 737
+    },
+    {
+      "file": "drink-verde.webp",
       "w": 616,
       "h": 737
     }
   ],
   "drink-vermelho": [
     {
-      "file": "drink-vermelho-481.webp",
+      "file": "drink-vermelho-800.webp",
       "w": 481,
       "h": 665
-    }
-  ],
-  "salao": [
-    {
-      "file": "salao-800.webp",
-      "w": 800,
-      "h": 715
     },
     {
-      "file": "salao-1320.webp",
-      "w": 1320,
-      "h": 1180
+      "file": "drink-vermelho.webp",
+      "w": 481,
+      "h": 665
     }
   ],
   "salao-ripado": [
@@ -89,21 +85,31 @@
       "h": 1158
     },
     {
-      "file": "salao-ripado-815.webp",
+      "file": "salao-ripado.webp",
       "w": 815,
       "h": 1180
     }
   ],
   "plate-fita-agua": [
     {
-      "file": "plate-fita-agua-572.webp",
+      "file": "plate-fita-agua-800.webp",
+      "w": 572,
+      "h": 1024
+    },
+    {
+      "file": "plate-fita-agua.webp",
       "w": 572,
       "h": 1024
     }
   ],
   "plate-bambu": [
     {
-      "file": "plate-bambu-623.webp",
+      "file": "plate-bambu-800.webp",
+      "w": 623,
+      "h": 976
+    },
+    {
+      "file": "plate-bambu.webp",
       "w": 623,
       "h": 976
     }
@@ -115,7 +121,7 @@
       "h": 447
     },
     {
-      "file": "plate-gelo-1376.webp",
+      "file": "plate-gelo.webp",
       "w": 1376,
       "h": 768
     }

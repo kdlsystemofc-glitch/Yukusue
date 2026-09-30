@@ -43,7 +43,7 @@
         <svg class="s-hero__ice" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true" focusable="false">
           <defs>
             <pattern id="gelo-tex" patternUnits="userSpaceOnUse" width="1000" height="560">
-              <image href="assets/plate-gelo-1376.webp" width="1000" height="560" preserveAspectRatio="xMidYMid slice"/>
+              <image href="assets/plate-gelo.webp" width="1000" height="560" preserveAspectRatio="xMidYMid slice"/>
             </pattern>
             <linearGradient id="gelo-topo" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0" stop-color="#fff" stop-opacity=".5"/>
@@ -92,10 +92,12 @@
         </svg>
         <span class="s-hero__apoio s-hero__apoio--temaki" aria-hidden="true"></span>
         <span class="s-hero__apoio s-hero__apoio--salmao" aria-hidden="true"></span>
-        <img class="s-hero__temaki" src="assets/hero-temaki-699.webp" width="699" height="898"
+        <!-- aresta frontal do gelo passa NA FRENTE da base da comida: a comida "senta" no bloco -->
+        <span class="s-hero__aresta" aria-hidden="true"></span>
+        <img class="s-hero__temaki" src="assets/hero-temaki.webp" width="699" height="898"
              alt="Temaki de salmão com cebolinha">
         <img class="s-hero__salmao" src="assets/hero-salmao-800.webp"
-             srcset="assets/hero-salmao-800.webp 800w, assets/hero-salmao-1057.webp 1057w"
+             srcset="assets/hero-salmao-800.webp 800w, assets/hero-salmao.webp 1057w"
              sizes="(min-width: 48rem) 26vw, 44vw" width="800" height="691"
              alt="Sashimi de salmão arrumado em forma de rosa">
       </div>
@@ -103,33 +105,33 @@
 
     <div class="flow">
       <!-- E3: fita de água contínua (03→04) — PLATE-02 recortado. Estática: sem transform/filter/opacity nela ou em ancestrais. -->
-      <img class="flow__fita" src="assets/plate-fita-agua-572.webp" alt="" aria-hidden="true" width="572" height="1024">
+      <img class="flow__fita" src="assets/plate-fita-agua.webp" alt="" aria-hidden="true" width="572" height="1024">
 
       <section class="s-pratos" id="pratos" aria-labelledby="pratos-titulo">
         <h2 class="sr-only" id="pratos-titulo">Pratos</h2>
-        <img class="s-pratos__bambu" src="assets/plate-bambu-623.webp" alt="" aria-hidden="true" width="623" height="976">
+        <img class="s-pratos__bambu" src="assets/plate-bambu.webp" alt="" aria-hidden="true" width="623" height="976">
         <figure class="s-pratos__ceviche">
           <span class="s-pratos__frame"><span class="s-pratos__well"><img src="assets/prato-ceviche-800.webp"
-               srcset="assets/prato-ceviche-800.webp 800w, assets/prato-ceviche-1320.webp 1320w"
+               srcset="assets/prato-ceviche-800.webp 800w, assets/prato-ceviche.webp 1320w"
                sizes="(min-width: 48rem) 40vw, 80vw" width="800" height="679" loading="lazy"
                alt="Ceviche de polvo com cebola roxa e ovas de peixe em tigela de cerâmica azul-cobalto"></span></span>
           <!-- Texto do próprio cliente (sobreposto na foto original imgi_45) -->
-          <figcaption>Ceviches frescos e temperadinhos</figcaption>
+          <figcaption class="sr-only">Ceviches frescos e temperadinhos</figcaption>
         </figure>
         <figure class="s-pratos__sal">
-          <img src="assets/prato-sal-recorte-456.webp" width="456" height="636" loading="lazy"
+          <img src="assets/prato-sal-recorte.webp" width="451" height="632" loading="lazy"
                alt="Fatias de salmão com ovas e raspas de limão servidas sobre uma pedra de sal rosa">
           <!-- PENDÊNCIA-CLIENTE: nome oficial deste prato no cardápio -->
-          <figcaption>Salmão na pedra de sal</figcaption>
+          <figcaption class="sr-only">Salmão na pedra de sal</figcaption>
         </figure>
       </section>
       <section class="s-bebidas" id="bebidas" aria-labelledby="bebidas-titulo">
         <h2 class="sr-only" id="bebidas-titulo">Bebidas e avaliações</h2>
         <div class="s-bebidas__drinks">
           <!-- PENDÊNCIA-CLIENTE: nomes/sabores oficiais dos drinks -->
-          <img class="s-bebidas__verde" src="assets/drink-verde-616.webp" width="616" height="737" loading="lazy"
+          <img class="s-bebidas__verde" src="assets/drink-verde.webp" width="616" height="737" loading="lazy"
                alt="Drink verde com rodelas de limão e guarda-chuva de papel">
-          <img class="s-bebidas__vermelho" src="assets/drink-vermelho-481.webp" width="481" height="665" loading="lazy"
+          <img class="s-bebidas__vermelho" src="assets/drink-vermelho.webp" width="481" height="665" loading="lazy"
                alt="Drink vermelho com morango e guarda-chuva de papel">
         </div>
         <div class="s-bebidas__reviews" id="avaliacoes">
@@ -154,8 +156,8 @@
 
     <section class="s-local" id="onde" aria-labelledby="onde-titulo">
       <div class="s-local__foto">
-        <img src="assets/salao-ripado-815.webp" width="815" height="1180" loading="lazy"
-             alt="Salão do restaurante: painel de ripas de madeira, estofado capitonê azul-marinho, mesa de madeira com pratos e masu laqueado vermelho">
+        <img src="assets/salao-ripado.webp" width="815" height="1180" loading="lazy"
+             alt="">
         <address class="s-local__end">
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Yukusue+Sushi+Ant%C3%A1rtico%2C+Av.+Ant%C3%A1rtico%2C+240%2C+S%C3%A3o+Bernardo+do+Campo"
              rel="noopener">Av. Antártico, 240 · Jardim do Mar<br>São Bernardo do Campo – SP</a>

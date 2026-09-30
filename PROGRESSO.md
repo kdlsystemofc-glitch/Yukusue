@@ -15,6 +15,10 @@ Commits: `design pronto` → `header pronta` → `hero pronta` → `pratos pront
 - Problema aberto: seção 05 sem foto nítida de salão/fachada (fundo de imgi_49 é desfocado no original).
 - Push: não feito (`GH_TOKEN` ausente, sem remote).
 
+## 2026-09-30 — Revisões de fidelidade e integração
+- Revisão de fidelidade, PLATE-02/03 (água e bambu), AUDITORIA.md, caminho A aplicado, caminho B com slots prontos.
+- Falta B: gerar as 4 versões de estúdio (prompts na resposta e em AUDITORIA.md) e salvar em imagens/estudio/.
+
 ## Falta
 - Receber do cliente: pendências do DESIGN.md §i (logo vetor, horário, link de pedido, fotos de salão/fachada, autorizações).
 - Opcional: AJ-01 e AJ-02 (versões por IA) para trocar o crop do ceviche e o retoque algorítmico do temaki.

@@ -46,6 +46,10 @@
   --gutter: clamp(1rem, 5.9vw, 5.25rem);
   --max: 90rem;
 
+  /* Sistema de luz único (AUDITORIA.md): luz de cima-esquerda, sombra para baixo-direita, tom aço */
+  --sombra-contato: drop-shadow(0.25rem 0.35rem 0.25rem rgb(69 94 114 / .35));
+  --sombra-projetada: drop-shadow(1.25rem 1.75rem 1.75rem rgb(69 94 114 / .28));
+
   --radius-pill: 999px;
   --stroke: 1px;
   --ease: cubic-bezier(.2, .7, .2, 1);
