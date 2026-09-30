@@ -112,6 +112,7 @@
   position: absolute; z-index: 2; left: calc(-12 * var(--vw)); top: 2%;
   width: calc(50 * var(--vw)); height: auto;
   rotate: -28deg;
+  transform-origin: 18% 92%; /* balança pela base do ramo (motion: data-loop="sway") */
 }
 .s-pratos__cena {
   position: absolute; z-index: 2;

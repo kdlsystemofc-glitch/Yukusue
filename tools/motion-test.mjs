@@ -80,6 +80,36 @@ for (const vp of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
   }
 }
 
+// ---------------------------------------------------------------- 1b. empilhamento com a fita (no meio das animações)
+for (const vp of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
+  console.log(`
+[empilhamento fita x camadas animadas ${vp.width}]`);
+  const { ctx, page } = await abrir(vp, "?q=high");
+  const H = await page.evaluate(() => document.documentElement.scrollHeight);
+  const erradas = new Set();
+  for (let y = 0; y <= H; y += 260) {
+    await rolarPara(page, y); await pausa(220); // captura no meio de entradas/parallax
+    const r = await page.evaluate(() => {
+      const fita = document.querySelector(".flow__fita"); fita.style.pointerEvents = "auto";
+      const F = fita.getBoundingClientRect(); const bad = [];
+      for (const el of document.querySelectorAll(".flow [data-reveal], .flow [data-parallax], .flow [data-loop]")) {
+        if (+getComputedStyle(el).opacity < 0.5) continue;
+        const R = el.getBoundingClientRect();
+        const x0 = Math.max(F.left, R.left, 0), x1 = Math.min(F.right, R.right, innerWidth), y0 = Math.max(F.top, R.top, 0), y1 = Math.min(F.bottom, R.bottom, innerHeight);
+        if (x1 - x0 < 8 || y1 - y0 < 8) continue;
+        for (let i = 1; i < 4; i++) for (let j = 1; j < 4; j++) {
+          const top = document.elementFromPoint(x0 + (x1 - x0) * i / 4, y0 + (y1 - y0) * j / 4);
+          if (top === fita) { bad.push(el.className); break; }
+        }
+      }
+      fita.style.pointerEvents = ""; return bad; });
+    r.forEach(x => erradas.add(x));
+  }
+  // o bambu e as cenas precisam ficar NA FRENTE da fita (é o desenho aprovado)
+  log(erradas.size === 0, `camadas animadas continuam na frente da fita ${[...erradas].join(",")}`);
+  await ctx.close();
+}
+
 // ---------------------------------------------------------------- 2. navegação rápida
 for (const vp of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
   console.log(`\n[navegação rápida ${vp.width}]`);
@@ -106,7 +136,9 @@ for (const vp of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
   for (const s of secoes) {
     const sel = SEL[s];
     for (const [p, tag] of [[st.page, "estatico"], [mo.page, "motion"]]) {
-      const y = await p.evaluate(sel => { const r = document.querySelector(sel).getBoundingClientRect(); return Math.max(0, r.top + scrollY + r.height / 2 - innerHeight / 2); }, sel);
+      // posição de repouso: o elemento com parallax (se houver) no centro da tela, onde o deslocamento é 0
+      const y = await p.evaluate(sel => { const sec = document.querySelector(sel); const el = sec.querySelector("[data-parallax]:not([data-parallax-mode])") || sec;
+        const r = el.getBoundingClientRect(); return Math.max(0, r.top + scrollY + r.height / 2 - innerHeight / 2); }, sel);
       if (s === "hero") await p.evaluate(() => scrollTo(0, 0));
       else { tag === "motion" ? await rolarPara(p, y - 400) : 0; await pausa(tag === "motion" ? 200 : 0); tag === "motion" ? await rolarPara(p, y) : await p.evaluate(y => scrollTo(0, y), y); }
       await pausa(tag === "motion" ? 1600 : 100);

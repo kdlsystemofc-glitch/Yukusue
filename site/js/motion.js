@@ -125,7 +125,13 @@
       var f = Math.min(0.10, Math.max(0.05, parseFloat(el.dataset.parallax) || 0.08)) * paraScale;
       var exit = el.dataset.parallaxMode === "exit";
       // yPercent é um canal separado do "y" usado pela entrada e pela flutuação: não brigam.
-      var setY = function (px) { var h = el.offsetHeight || 1; gsap.set(el, { yPercent: px / h * 100 }); };
+      // pixel inteiro (sem reamostragem borrada) e zona morta de ±1px no repouso
+      var last = null;
+      var setY = function (px) {
+        px = Math.abs(px) < 1.5 ? 0 : Math.round(px);
+        if (px === last) return; last = px;
+        gsap.set(el, { yPercent: px / (el.offsetHeight || 1) * 100 }); // só yPercent: não toca no "y" da entrada/flutuação
+      };
       var trig = exit ? (el.closest("section") || el) : el;   // saída: conta desde o 1º pixel de rolagem da seção
       var st = ST.create({
         trigger: trig,
