@@ -75,6 +75,18 @@
       "h": 1180
     }
   ],
+  "salao-ripado": [
+    {
+      "file": "salao-ripado-800.webp",
+      "w": 800,
+      "h": 1158
+    },
+    {
+      "file": "salao-ripado-815.webp",
+      "w": 815,
+      "h": 1180
+    }
+  ],
   "plate-gelo": [
     {
       "file": "plate-gelo-800.webp",

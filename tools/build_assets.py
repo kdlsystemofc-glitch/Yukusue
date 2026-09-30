@@ -108,6 +108,8 @@ save("drink-vermelho", clean_alpha(Image.fromarray(a)), alpha=True)
 
 # Salão real: ripado, estofado capitonê, mural e masu (substitui a "entrada" inventada do mockup).
 save("salao", Image.open(IMG / F["salao"]).convert("RGB").crop((0, 0, 1320, 1180)))
+# Mesmo arquivo, sem a garrafa (evita destacar a marca de terceiro no recorte largo).
+save("salao-ripado", Image.open(IMG / F["salao"]).convert("RGB").crop((505, 0, 1320, 1180)))
 
 # Plate decorativo (gelo abstrato).
 save("plate-gelo", Image.open(PLATE).convert("RGB"))
