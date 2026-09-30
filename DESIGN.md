@@ -352,3 +352,12 @@ Ajustes técnicos feitos sozinho:
 | `imagens/estudio/salmao.png` | imgi_57 |
 | `imagens/estudio/ceviche.png` | imgi_45 |
 | `imagens/estudio/pedra-sal.png` | imgi_27 |
+
+## m) Decisão: todas as imagens geradas por IA (2026-09-30)
+O usuário decidiu não usar nenhuma foto real; todas as imagens serão geradas. Isso substitui a regra de ouro do CLAUDE.md neste projeto (o CLAUDE.md em si não foi editado).
+Salvaguardas:
+- Os prompts reproduzem os pratos que o restaurante serve de verdade (temaki de salmão picado, rosa de salmão, ceviche de polvo na tigela cobalto, salmão na pedra de sal, drinks de kiwi e de frutas vermelhas), para o site não prometer o que a casa não serve.
+- Nenhuma imagem finge ser a fachada real.
+- O logo continua o real, porque gerar um logo seria inventar a marca.
+- Tudo é marcado em assets.md como gerado, e a publicação depende da aprovação do cliente.
+Estratégia de integração: cenas agrupadas geradas com um BLOCO DE ESTILO idêntico (mesmo fundo #E8F1F8, mesma luz, mesma câmera, mesma lente), sobre fundo liso. O pipeline recorta por diferença de cor (key_bg), o que preserva sombras e transparências, e empilha as camadas no HTML, com o texto sempre em HTML.
