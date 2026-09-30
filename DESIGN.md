@@ -309,3 +309,18 @@ Temaki (imgi_47 pós-AJ-02), prato de salmão em rosa (imgi_57), dois drinks (im
 > 12. **Instagram**, e-mail e domínio que querem usar.
 >
 > Nada disso trava o desenvolvimento: seguimos construindo e encaixamos as respostas assim que chegarem. Obrigado!
+
+---
+
+## j) Decisões tomadas na construção (2026-09-30)
+
+As perguntas do §h ficaram sem resposta, então valeram as escolhas padrão:
+1. Hero **A**: recortes reais (temaki imgi_47 + salmão em rosa imgi_57) sobre a faixa de gelo, com PLATE-01 como textura.
+2. Logo **A**: logo real numa pílula preta no header (cor `--logo-fundo`); "YUKUSUE" em Cinzel de gelo no hero.
+3. Bambu **A**: ramo SVG duotônico musgo (fiel ao mockup).
+4. Galeria: **adiada**. Ficaram só os 5 blocos do mockup; as fotos de reserva estão em assets.md.
+
+Ajustes técnicos feitos sozinho:
+- **Breakpoints:** header e seção 04 empilham abaixo de 64rem; hero, pratos e localização, abaixo de 48rem. Em 768 a nav de 5 itens e as citações não cabiam no layout de desktop.
+- **Seção 05:** a foto ocupa 9–60% (no mockup, 9–81%). O único recorte real disponível sem garrafa de terceiro tem 815 px, e esticar a 72% ampliava demais.
+- **Temaki:** a foto real é frontal, então o recorte foi girado −72° para ficar "deitado" como no mockup.

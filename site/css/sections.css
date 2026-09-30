@@ -32,7 +32,7 @@
 .s-header__logo img { width: 9.125rem; height: auto; }
 
 .only-mobile { display: none; }
-@media (max-width: 47.99rem) {
+@media (max-width: 63.99rem) {
   .only-mobile { display: list-item; }
   .only-desktop { display: none; }
   .s-header__nav {
@@ -195,7 +195,7 @@
 .s-bebidas__quote blockquote p::after { content: "”"; margin-left: .1em; }
 .s-bebidas__quote figcaption { margin-top: var(--sp-1); padding-left: calc(var(--fs-quote) * 1.1); font-size: var(--fs-meta); color: var(--texto-meta); }
 
-@media (max-width: 47.99rem) {
+@media (max-width: 63.99rem) {
   .s-bebidas { height: auto; min-height: 0; display: grid; overflow: visible; }
   .s-bebidas__reviews { position: relative; inset: auto; order: -1; padding: var(--sp-6) var(--gutter) var(--sp-5); padding-left: calc(var(--gutter) + 14vw); }
   .s-bebidas__drinks { position: relative; width: 100%; height: 72vw; overflow: clip; }

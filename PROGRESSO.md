@@ -7,8 +7,15 @@
 - `DESIGN.md` criado: leitura mockup × realidade, paleta com contraste WCAG, tipografia, camadas, decorativos em CSS/SVG, motion, plano de imagens, perguntas e pendências do cliente.
 - Commit: nenhum (a pasta ainda não é repositório git).
 
+## 2026-09-30 — Etapa 2: construção estática (concluída)
+Commits: `design pronto` → `header pronta` → `hero pronta` → `pratos pronta` → `bebidas e avaliações pronta` → `localização e CTA pronta` → ajustes finais.
+- Assets: `tools/build_assets.py` → `site/assets/*.webp` (+ `assets.md`). SVGs: `tools/gen_svg.py` → `site/svg/`.
+- Screenshots: `node tools/shot.mjs <seção> <anterior> <larguras> <rótulo>`; comparação: `python tools/compare.py`.
+- Site: `site/index.html` (abrir direto no navegador; não precisa de build).
+- Problema aberto: seção 05 sem foto nítida de salão/fachada (fundo de imgi_49 é desfocado no original).
+- Push: não feito (`GH_TOKEN` ausente, sem remote).
+
 ## Falta
-- Respostas das 4 perguntas do DESIGN.md §h.
-- Gerar PLATE-01 (opcional) e os ajustes AJ-01…AJ-04; recortes; criar `site/assets/` e `assets.md`.
-- Etapa 2: construção do site, seção por seção, com screenshots e comparação.
-- Etapa 3: motion.
+- Receber do cliente: pendências do DESIGN.md §i (logo vetor, horário, link de pedido, fotos de salão/fachada, autorizações).
+- Opcional: AJ-01 e AJ-02 (versões por IA) para trocar o crop do ceviche e o retoque algorítmico do temaki.
+- Etapa 3: motion (DESIGN.md §f) — a fita e o bambu não se movem.
