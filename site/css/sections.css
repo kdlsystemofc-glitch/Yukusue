@@ -106,3 +106,58 @@
   .s-hero__temaki { width: 42vw; left: 12%; top: 22%; }
   .s-hero__salmao { width: 44vw; left: 50%; top: 40%; }
 }
+
+/* ============ FLOW (03 + 04) — fita de água estática ============ */
+.flow { position: relative; }
+.flow__fita {
+  position: absolute; z-index: 1; top: 0; left: 0;
+  width: 100%; height: auto;
+  pointer-events: none;
+}
+
+/* ============ 03 PRATOS ============ */
+.s-pratos {
+  position: relative;
+  height: 47.2vw;
+  min-height: 30rem;
+}
+.s-pratos__bambu {
+  position: absolute; z-index: 2; left: 0; top: 0;
+  height: 100%; width: auto;
+}
+.s-pratos figure { position: absolute; z-index: 2; }
+.s-pratos figcaption {
+  margin-top: var(--sp-3);
+  font-size: var(--fs-label); font-weight: 500;
+  letter-spacing: var(--track-label); text-transform: uppercase;
+  color: var(--aco-700);
+}
+.s-pratos__ceviche { left: 31%; top: 11%; width: 39vw; text-align: center; }
+.s-pratos__frame {
+  display: block; position: relative; overflow: hidden;
+  aspect-ratio: 1; border-radius: 50%;
+  border: clamp(4px, .6vw, 10px) solid var(--cobalto);
+}
+/* zoom na comida: a imagem-folha é maior que o círculo */
+.s-pratos__frame img {
+  position: absolute; width: 150%; max-width: none; left: -52%; top: -40%;
+}
+.s-pratos__sal { right: 0; top: 8%; width: 31vw; height: 80%; }
+.s-pratos__sal img {
+  width: 100%; height: 100%; object-fit: cover; object-position: 30% 45%;
+  clip-path: polygon(10% 3%, 100% 0, 100% 100%, 0 96%);
+}
+.s-pratos__sal figcaption { padding-left: 12%; }
+@media (max-width: 47.99rem) {
+  .flow__fita { width: 58vw; height: 100%; left: -6vw; }
+  .s-pratos {
+    height: auto; min-height: 0;
+    display: grid; justify-items: center; row-gap: var(--sp-6);
+    padding: var(--sp-6) var(--gutter) var(--sp-7);
+  }
+  .s-pratos__bambu { height: auto; width: 34vw; top: -2rem; left: -4vw; }
+  .s-pratos figure { position: relative; inset: auto; }
+  .s-pratos__ceviche { width: min(74vw, 22rem); justify-self: end; }
+  .s-pratos__sal { width: 78vw; height: auto; justify-self: end; margin-right: calc(-1 * var(--gutter)); }
+  .s-pratos__sal img { height: auto; aspect-ratio: 4 / 5; }
+}

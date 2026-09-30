@@ -60,7 +60,29 @@
     </section>
 
     <div class="flow">
-      <section class="s-pratos" id="pratos" aria-labelledby="pratos-titulo"></section>
+      <!-- E3: fita de água contínua (03→04). Estática: sem transform/filter/opacity nela ou em ancestrais. -->
+      <img class="flow__fita" src="svg/fita.svg" alt="" aria-hidden="true" width="1440" height="1304">
+
+      <section class="s-pratos" id="pratos" aria-labelledby="pratos-titulo">
+        <h2 class="sr-only" id="pratos-titulo">Pratos</h2>
+        <img class="s-pratos__bambu" src="svg/bambu.svg" alt="" aria-hidden="true" width="460" height="680">
+        <figure class="s-pratos__ceviche">
+          <span class="s-pratos__frame"><img src="assets/prato-ceviche-800.webp"
+               srcset="assets/prato-ceviche-800.webp 800w, assets/prato-ceviche-1320.webp 1320w"
+               sizes="(min-width: 48rem) 40vw, 80vw" width="800" height="679" loading="lazy"
+               alt="Ceviche de polvo com cebola roxa e ovas de peixe em tigela de cerâmica azul-cobalto"></span>
+          <!-- Texto do próprio cliente (sobreposto na foto original imgi_45) -->
+          <figcaption>Ceviches frescos e temperadinhos</figcaption>
+        </figure>
+        <figure class="s-pratos__sal">
+          <img src="assets/prato-sashimi-sal-800.webp"
+               srcset="assets/prato-sashimi-sal-800.webp 800w, assets/prato-sashimi-sal-1440.webp 1440w"
+               sizes="(min-width: 48rem) 34vw, 70vw" width="800" height="1067" loading="lazy"
+               alt="Salmão com ovas e raspas de limão sobre pedra de sal, ao lado de sashimi, pepino e flores, com fumaça de gelo seco">
+          <!-- PENDÊNCIA-CLIENTE: nome oficial deste prato no cardápio -->
+          <figcaption>Salmão na pedra de sal</figcaption>
+        </figure>
+      </section>
       <section class="s-bebidas" id="bebidas" aria-labelledby="bebidas-titulo"></section>
     </div>
 
