@@ -94,6 +94,20 @@
       "h": 1180
     }
   ],
+  "plate-fita-agua": [
+    {
+      "file": "plate-fita-agua-572.webp",
+      "w": 572,
+      "h": 1024
+    }
+  ],
+  "plate-bambu": [
+    {
+      "file": "plate-bambu-623.webp",
+      "w": 623,
+      "h": 976
+    }
+  ],
   "plate-gelo": [
     {
       "file": "plate-gelo-800.webp",

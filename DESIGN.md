@@ -331,3 +331,4 @@ Ajustes técnicos feitos sozinho:
 - Pratos: o ceviche entra numa **tigela vista de cima** (aro cobalto em CSS, cor da louça real) e a foto retangular da pedra de sal virou o **recorte real do bloco de sal** (imgi_27).
 - Fita de água: SVG com refração (feDisplacementMap) e brilho especular; os tracejados saíram. Bambu com degradê por folha e colmo cilíndrico. Cores do bambu amostradas do mockup (#719325).
 - Limites que continuam: a comida é a real (regra de ouro). A seção 05 segue sem foto de entrada/fachada. Fita e bambu continuam ilustrados; para ficarem fotográficos como no mockup, é preciso gerar os plates PLATE-02 e PLATE-03.
+- Atualização: PLATE-02 (fita de água) e PLATE-03 (bambu) entregues e aplicados no lugar dos SVGs (que ficam em `site/svg/` como alternativa). O recorte é por diferença de cor em relação ao fundo liso, o que preserva a transparência. A fita não se move e só recebe máscara na própria imagem.

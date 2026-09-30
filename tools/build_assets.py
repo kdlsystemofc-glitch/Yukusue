@@ -28,6 +28,8 @@ F = {
     "salao": "imgi_49_616575006_18171128395380370_3490693935938839873_n.jpg",
 }
 PLATE = ROOT / "design" / "plates" / "Gemini_Generated_Image_s9ein8s9ein8s9ei.jpg"
+PLATE_AGUA = ROOT / "design" / "plates" / "plate-02-fita-agua.png"
+PLATE_BAMBU = ROOT / "design" / "plates" / "plate-03-bambu.png"
 
 isnet = new_session("isnet-general-use")
 u2 = new_session("u2net")
@@ -114,6 +116,26 @@ save("drink-vermelho", clean_alpha(Image.fromarray(a)), alpha=True)
 save("salao", Image.open(IMG / F["salao"]).convert("RGB").crop((0, 0, 1320, 1180)))
 # Mesmo arquivo, sem a garrafa (evita destacar a marca de terceiro no recorte largo).
 save("salao-ripado", Image.open(IMG / F["salao"]).convert("RGB").crop((505, 0, 1320, 1180)))
+
+def key_bg(path, T, gamma=1.0):
+    """Recorte por diferença de cor para plates sobre fundo liso (preserva vidro/transparência).
+    alpha = distância até a cor de fundo / T; cor = fundo + diferença / alpha (descontaminação)."""
+    im = np.asarray(Image.open(path).convert("RGB")).astype(np.float32)
+    h, w, _ = im.shape
+    bg = np.median(np.concatenate([im[:8].reshape(-1, 3), im[-8:].reshape(-1, 3),
+                                   im[:, :8].reshape(-1, 3), im[:, -8:].reshape(-1, 3)]), axis=0)
+    d = im - bg
+    a = np.clip(np.abs(d).max(axis=2) / T, 0, 1) ** gamma
+    a[a < 0.04] = 0
+    safe = np.maximum(a, 1e-3)[..., None]
+    rgb = np.clip(bg + d / safe, 0, 255)
+    out = np.dstack([rgb, a * 255]).astype(np.uint8)
+    return Image.fromarray(out, "RGBA")
+
+
+# PLATE-02 fita de água e PLATE-03 bambu (decorativos gerados; não representam nada do cliente).
+save("plate-fita-agua", key_bg(PLATE_AGUA, 34), alpha=True)
+save("plate-bambu", clean_alpha(key_bg(PLATE_BAMBU, 55), 10), alpha=True)
 
 # Plate decorativo (gelo abstrato).
 save("plate-gelo", Image.open(PLATE).convert("RGB"))

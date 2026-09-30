@@ -105,9 +105,12 @@
 /* ============ FLOW (03 + 04) — fita de água estática ============ */
 .flow { position: relative; }
 .flow__fita {
-  position: absolute; z-index: 1; top: 0; left: 0;
-  width: 100%; height: auto;
+  position: absolute; z-index: 1; top: -1%; left: -3vw;
+  width: 54vw; height: 101%;
   pointer-events: none;
+  /* termina "por trás" dos drinks, como no mockup (máscara só na própria folha) */
+  -webkit-mask-image: linear-gradient(180deg, #000 78%, transparent 97%);
+  mask-image: linear-gradient(180deg, #000 78%, transparent 97%);
 }
 
 /* ============ 03 PRATOS ============ */
@@ -118,8 +121,8 @@
   overflow-x: clip;
 }
 .s-pratos__bambu {
-  position: absolute; z-index: 2; left: -1vw; top: 0;
-  width: 33vw; height: auto;
+  position: absolute; z-index: 2; left: -7vw; top: -3%;
+  width: 36vw; height: auto;
 }
 .s-pratos figure { position: absolute; z-index: 2; }
 .s-pratos figcaption {
@@ -162,7 +165,7 @@
 }
 .s-pratos__sal figcaption { position: absolute; right: 22%; bottom: -8%; white-space: nowrap; }
 @media (max-width: 47.99rem) {
-  .flow__fita { width: 58vw; height: 100%; left: -6vw; }
+  .flow__fita { width: 30vw; height: 100%; left: -13vw; }
   .s-pratos {
     height: auto; min-height: 0;
     display: grid; justify-items: center; row-gap: var(--sp-6);

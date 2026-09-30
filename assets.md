@@ -15,6 +15,8 @@ largura nativa (nunca ampliamos por reamostragem).
 | Bebidas: drink verde | `drink-verde-616.webp` | `imagens/imgi_48_…_n.jpg` | FOTO REAL recortada | recorte (rembg + máscara manual na borda com a esteira) | recorte de foto real, sem pixel novo |
 | Bebidas: drink vermelho | `drink-vermelho-481.webp` | `imagens/imgi_48_…_n.jpg` | FOTO REAL recortada | recorte (rembg isnet + u2net no guarda-chuva) | guarda-chuva cortado na borda direita **já no original** |
 | Final: salão | `salao-800.webp`, `salao-1320.webp` | `imagens/imgi_49_…_n.jpg` | FOTO REAL | crop y 0–1180 | mostra rótulo de saquê de terceiro (Azuma Kirin), produto vendido no local |
+| Fita de água (03→04) | `plate-fita-agua-572.webp` | `design/plates/plate-02-fita-agua.png` (572×1024) | PLATE GERADO | recorte por diferença de cor (preserva a transparência do vidro) | decorativo; não representa nada do cliente. Resolução baixa para 1440 (esticado ~1,3×): uma versão 2× melhora |
+| Bambu (03) | `plate-bambu-623.webp` | `design/plates/plate-03-bambu.png` (687×1024) | PLATE GERADO | recorte por diferença de cor | decorativo; não representa nada do cliente |
 | Gelo (letras do H1 + faixa do hero) | `plate-gelo-800.webp`, `plate-gelo-1376.webp` | `design/plates/Gemini_Generated_Image_s9ein8s9ein8s9ei.jpg` | PLATE GERADO | só redimensionamento | decorativo abstrato (PLATE-01); não representa nada do cliente |
 
 ## Slots sem arquivo / fallbacks adotados
