@@ -19,6 +19,10 @@ Commits: `design pronto` → `header pronta` → `hero pronta` → `pratos pront
 - Revisão de fidelidade, PLATE-02/03 (água e bambu), AUDITORIA.md, caminho A aplicado, caminho B com slots prontos.
 - Falta B: gerar as 4 versões de estúdio (prompts na resposta e em AUDITORIA.md) e salvar em imagens/estudio/.
 
+## 2026-09-30 — Imagens 100% geradas
+- 6 imagens geradas (design/plates/img-01..06) aplicadas como cenas completas recortadas por diferença de cor. As fotos reais saíram do site, exceto o logo.
+- Falta: versões em alta resolução (2048 px+) das 6 imagens; aprovação do cliente para as imagens geradas.
+
 ## Falta
 - Receber do cliente: pendências do DESIGN.md §i (logo vetor, horário, link de pedido, fotos de salão/fachada, autorizações).
 - Opcional: AJ-01 e AJ-02 (versões por IA) para trocar o crop do ceviche e o retoque algorítmico do temaki.

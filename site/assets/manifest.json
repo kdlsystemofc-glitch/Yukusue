@@ -6,112 +6,76 @@
       "h": 40
     }
   ],
-  "hero-temaki": [
+  "cena-hero": [
     {
-      "file": "hero-temaki-800.webp",
-      "w": 699,
-      "h": 898
-    },
-    {
-      "file": "hero-temaki.webp",
-      "w": 699,
-      "h": 898
-    }
-  ],
-  "hero-salmao": [
-    {
-      "file": "hero-salmao-800.webp",
+      "file": "cena-hero-800.webp",
       "w": 800,
-      "h": 691
+      "h": 356
     },
     {
-      "file": "hero-salmao.webp",
-      "w": 1057,
-      "h": 913
+      "file": "cena-hero.webp",
+      "w": 940,
+      "h": 418
     }
   ],
-  "prato-ceviche": [
+  "cena-pratos": [
     {
-      "file": "prato-ceviche-800.webp",
+      "file": "cena-pratos-800.webp",
+      "w": 728,
+      "h": 555
+    },
+    {
+      "file": "cena-pratos.webp",
+      "w": 728,
+      "h": 555
+    }
+  ],
+  "cena-drinks": [
+    {
+      "file": "cena-drinks-800.webp",
       "w": 800,
-      "h": 679
+      "h": 551
     },
     {
-      "file": "prato-ceviche.webp",
-      "w": 1320,
-      "h": 1120
-    }
-  ],
-  "prato-sal-recorte": [
-    {
-      "file": "prato-sal-recorte-800.webp",
-      "w": 451,
-      "h": 632
-    },
-    {
-      "file": "prato-sal-recorte.webp",
-      "w": 451,
-      "h": 632
-    }
-  ],
-  "drink-verde": [
-    {
-      "file": "drink-verde-800.webp",
-      "w": 616,
-      "h": 737
-    },
-    {
-      "file": "drink-verde.webp",
-      "w": 616,
-      "h": 737
-    }
-  ],
-  "drink-vermelho": [
-    {
-      "file": "drink-vermelho-800.webp",
-      "w": 481,
-      "h": 665
-    },
-    {
-      "file": "drink-vermelho.webp",
-      "w": 481,
-      "h": 665
-    }
-  ],
-  "salao-ripado": [
-    {
-      "file": "salao-ripado-800.webp",
+      "file": "cena-drinks.webp",
       "w": 800,
-      "h": 1158
-    },
-    {
-      "file": "salao-ripado.webp",
-      "w": 815,
-      "h": 1180
+      "h": 551
     }
   ],
-  "plate-fita-agua": [
+  "cena-ambiente": [
     {
-      "file": "plate-fita-agua-800.webp",
-      "w": 572,
+      "file": "cena-ambiente-800.webp",
+      "w": 800,
+      "h": 437
+    },
+    {
+      "file": "cena-ambiente.webp",
+      "w": 1024,
+      "h": 559
+    }
+  ],
+  "fita-agua": [
+    {
+      "file": "fita-agua-800.webp",
+      "w": 466,
       "h": 1024
     },
     {
-      "file": "plate-fita-agua.webp",
-      "w": 572,
+      "file": "fita-agua.webp",
+      "w": 466,
       "h": 1024
     }
   ],
-  "plate-bambu": [
+  "bambu": [
     {
-      "file": "plate-bambu-800.webp",
-      "w": 623,
-      "h": 976
+      "file": "bambu-800.webp",
+      "w": 576,
+      "h": 559
     },
     {
-      "file": "plate-bambu.webp",
-      "w": 623,
-      "h": 976
+      "file": "bambu.webp",
+      "w": 576,
+      "h": 559
     }
   ],
   "plate-gelo": [

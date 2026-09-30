@@ -35,105 +35,32 @@
   <main id="conteudo">
     <section class="s-hero" id="inicio" aria-labelledby="hero-titulo">
       <h1 class="s-hero__title" id="hero-titulo">
-        <span class="s-hero__word" data-text="Yukusue">Yukusue</span>
+        <span class="s-hero__word">Yukusue</span>
         <span class="sr-only">Sushi Antártico — restaurante japonês em São Bernardo do Campo</span>
       </h1>
-      <div class="s-hero__stage" aria-hidden="false">
-        <!-- E2: bloco de gelo decorativo — textura do PLATE-01 moldada em SVG (faces + arestas + brilho) -->
-        <svg class="s-hero__ice" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-          <defs>
-            <pattern id="gelo-tex" patternUnits="userSpaceOnUse" width="1000" height="560">
-              <image href="assets/plate-gelo.webp" width="1000" height="560" preserveAspectRatio="xMidYMid slice"/>
-            </pattern>
-            <linearGradient id="gelo-topo" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fff" stop-opacity=".5"/>
-              <stop offset="1" stop-color="#fff" stop-opacity=".08"/>
-            </linearGradient>
-            <linearGradient id="gelo-frente" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stop-color="#fff" stop-opacity=".35"/>
-              <stop offset=".25" stop-color="#718795" stop-opacity=".18"/>
-              <stop offset=".7" stop-color="#455E72" stop-opacity=".22"/>
-              <stop offset="1" stop-color="#E8F1F8" stop-opacity=".5"/>
-            </linearGradient>
-            <linearGradient id="gelo-lados" x1="0" x2="1">
-              <stop offset="0" stop-color="#fff" stop-opacity=".7"/>
-              <stop offset=".08" stop-color="#fff" stop-opacity="0"/>
-              <stop offset=".92" stop-color="#fff" stop-opacity="0"/>
-              <stop offset="1" stop-color="#fff" stop-opacity=".7"/>
-            </linearGradient>
-            <filter id="gelo-contraste" color-interpolation-filters="sRGB">
-              <feComponentTransfer>
-                <feFuncR type="linear" slope="1.9" intercept="-.62"/>
-                <feFuncG type="linear" slope="1.8" intercept="-.52"/>
-                <feFuncB type="linear" slope="1.6" intercept="-.34"/>
-              </feComponentTransfer>
-            </filter>
-            <filter id="gelo-f" x="-3%" y="-8%" width="106%" height="116%" color-interpolation-filters="sRGB">
-              <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="8" result="n"/>
-              <feDisplacementMap in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G" result="d"/>
-              <feGaussianBlur in="d" stdDeviation="6" result="b"/>
-              <feSpecularLighting in="b" surfaceScale="8" specularConstant=".65" specularExponent="30" lighting-color="#fff" result="s">
-                <feDistantLight azimuth="240" elevation="55"/>
-              </feSpecularLighting>
-              <feComposite in="s" in2="d" operator="in" result="si"/>
-              <feMerge><feMergeNode in="d"/><feMergeNode in="si"/></feMerge>
-            </filter>
-          </defs>
-          <g filter="url(#gelo-f)">
-            <path d="M40 150 C 30 95 70 70 140 66 L 460 52 C 640 44 820 36 920 50 C 972 58 990 92 982 140 L 976 190 C 700 205 300 212 48 200 C 28 188 32 170 40 150 Z" fill="url(#gelo-tex)" opacity=".9" filter="url(#gelo-contraste)"/>
-            <path d="M40 150 C 30 95 70 70 140 66 L 460 52 C 640 44 820 36 920 50 C 972 58 990 92 982 140 L 976 190 C 700 205 300 212 48 200 C 28 188 32 170 40 150 Z" fill="url(#gelo-topo)"/>
-            <path d="M48 200 C 300 212 700 205 976 190 C 990 260 996 340 992 402 L 14 402 C 8 330 16 250 48 200 Z" fill="url(#gelo-tex)" opacity=".9" filter="url(#gelo-contraste)"/>
-            <path d="M48 200 C 300 212 700 205 976 190 C 990 260 996 340 992 402 L 14 402 C 8 330 16 250 48 200 Z" fill="url(#gelo-frente)"/>
-            <path d="M14 402 C 8 330 16 250 48 200 C 28 188 32 170 40 150 C 30 95 70 70 140 66 L 460 52 C 640 44 820 36 920 50 C 972 58 990 92 982 140 L 976 190 C 990 260 996 340 992 402 Z" fill="url(#gelo-lados)"/>
-            <path d="M48 200 C 300 212 700 205 976 190" fill="none" stroke="#fff" stroke-width="4" stroke-opacity=".95"/>
-            <path d="M40 150 C 30 95 70 70 140 66 L 460 52 C 640 44 820 36 920 50 C 972 58 990 92 982 140" fill="none" stroke="#fff" stroke-width="3" stroke-opacity=".9"/>
-            <path d="M160 230 L 300 222 L 250 300 Z M 620 240 L 760 228 L 700 320 Z M 420 300 L 520 290 L 470 370 Z" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".55" stroke-width="1.5"/>
-          </g>
-        </svg>
-        <span class="s-hero__apoio s-hero__apoio--temaki" aria-hidden="true"></span>
-        <span class="s-hero__apoio s-hero__apoio--salmao" aria-hidden="true"></span>
-        <!-- aresta frontal do gelo passa NA FRENTE da base da comida: a comida "senta" no bloco -->
-        <span class="s-hero__aresta" aria-hidden="true"></span>
-        <img class="s-hero__temaki" src="assets/hero-temaki.webp" width="699" height="898"
-             alt="Temaki de salmão com cebolinha">
-        <img class="s-hero__salmao" src="assets/hero-salmao-800.webp"
-             srcset="assets/hero-salmao-800.webp 800w, assets/hero-salmao.webp 1057w"
-             sizes="(min-width: 48rem) 26vw, 44vw" width="800" height="691"
-             alt="Sashimi de salmão arrumado em forma de rosa">
-      </div>
+      <!-- IMG-01 gerada por IA (DESIGN.md §m): temaki e rosa de salmão sobre bloco de gelo. Fica NA FRENTE do título, como no mockup. -->
+      <img class="s-hero__cena" src="assets/cena-hero.webp" srcset="assets/cena-hero-800.webp 800w, assets/cena-hero.webp 940w"
+           sizes="(min-width: 48rem) 88vw, 118vw" width="940" height="418"
+           alt="Temaki de salmão e sashimi de salmão em forma de rosa servidos sobre um bloco de gelo">
     </section>
 
     <div class="flow">
-      <!-- E3: fita de água contínua (03→04) — PLATE-02 recortado. Estática: sem transform/filter/opacity nela ou em ancestrais. -->
-      <img class="flow__fita" src="assets/plate-fita-agua.webp" alt="" aria-hidden="true" width="572" height="1024">
+      <!-- IMG-05: fita de água contínua (03→04). Estática: sem transform/filter/opacity nela ou em ancestrais. -->
+      <img class="flow__fita" src="assets/fita-agua.webp" alt="" aria-hidden="true" width="572" height="1024">
 
       <section class="s-pratos" id="pratos" aria-labelledby="pratos-titulo">
         <h2 class="sr-only" id="pratos-titulo">Pratos</h2>
-        <img class="s-pratos__bambu" src="assets/plate-bambu.webp" alt="" aria-hidden="true" width="623" height="976">
-        <figure class="s-pratos__ceviche">
-          <span class="s-pratos__frame"><span class="s-pratos__well"><img src="assets/prato-ceviche-800.webp"
-               srcset="assets/prato-ceviche-800.webp 800w, assets/prato-ceviche.webp 1320w"
-               sizes="(min-width: 48rem) 40vw, 80vw" width="800" height="679" loading="lazy"
-               alt="Ceviche de polvo com cebola roxa e ovas de peixe em tigela de cerâmica azul-cobalto"></span></span>
-          <!-- Texto do próprio cliente (sobreposto na foto original imgi_45) -->
-          <figcaption class="sr-only">Ceviches frescos e temperadinhos</figcaption>
-        </figure>
-        <figure class="s-pratos__sal">
-          <img src="assets/prato-sal-recorte.webp" width="451" height="632" loading="lazy"
-               alt="Fatias de salmão com ovas e raspas de limão servidas sobre uma pedra de sal rosa">
-          <!-- PENDÊNCIA-CLIENTE: nome oficial deste prato no cardápio -->
-          <figcaption class="sr-only">Salmão na pedra de sal</figcaption>
-        </figure>
+        <img class="s-pratos__bambu" src="assets/bambu.webp" alt="" aria-hidden="true" width="968" height="556" loading="lazy">
+        <!-- IMG-02 gerada por IA. PENDÊNCIA-CLIENTE: nomes oficiais dos pratos. -->
+        <img class="s-pratos__cena" src="assets/cena-pratos.webp" width="728" height="555" loading="lazy"
+             alt="Ceviche de polvo com cebola roxa, pepino e ovas em tigela azul-cobalto, ao lado de salmão com ovas e raspas de limão sobre pedra de sal rosa">
       </section>
+
       <section class="s-bebidas" id="bebidas" aria-labelledby="bebidas-titulo">
         <h2 class="sr-only" id="bebidas-titulo">Bebidas e avaliações</h2>
-        <div class="s-bebidas__drinks">
-          <!-- PENDÊNCIA-CLIENTE: nomes/sabores oficiais dos drinks -->
-          <img class="s-bebidas__verde" src="assets/drink-verde.webp" width="616" height="737" loading="lazy"
-               alt="Drink verde com rodelas de limão e guarda-chuva de papel">
-          <img class="s-bebidas__vermelho" src="assets/drink-vermelho.webp" width="481" height="665" loading="lazy"
-               alt="Drink vermelho com morango e guarda-chuva de papel">
-        </div>
+        <!-- IMG-03 gerada por IA. PENDÊNCIA-CLIENTE: nomes/sabores oficiais dos drinks. -->
+        <img class="s-bebidas__cena" src="assets/cena-drinks.webp" width="800" height="551" loading="lazy"
+             alt="Dois drinks em taças: um verde de kiwi com limão e outro vermelho de frutas vermelhas com morango">
         <div class="s-bebidas__reviews" id="avaliacoes">
           <!-- Nota e total conforme ficha do Google Maps no levantamento (CLIENTE.md). Atualizar antes de publicar. -->
           <p class="s-bebidas__nota">
@@ -156,8 +83,9 @@
 
     <section class="s-local" id="onde" aria-labelledby="onde-titulo">
       <div class="s-local__foto">
-        <img src="assets/salao-ripado.webp" width="815" height="1180" loading="lazy"
-             alt="">
+        <!-- IMG-04 gerada por IA: ambiente decorativo, NÃO é a fachada real. -->
+        <img src="assets/cena-ambiente.webp" srcset="assets/cena-ambiente-800.webp 800w, assets/cena-ambiente.webp 1024w"
+             sizes="100vw" width="1024" height="559" loading="lazy" alt="">
         <address class="s-local__end">
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Yukusue+Sushi+Ant%C3%A1rtico%2C+Av.+Ant%C3%A1rtico%2C+240%2C+S%C3%A3o+Bernardo+do+Campo"
              rel="noopener">Av. Antártico, 240 · Jardim do Mar<br>São Bernardo do Campo – SP</a>

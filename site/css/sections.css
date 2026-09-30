@@ -47,7 +47,7 @@
 /* ============ 02 HERO ============ */
 .s-hero {
   position: relative;
-  height: clamp(26rem, 47.5vw, 45rem);
+  height: clamp(24rem, 52vw, 50rem);
   overflow: clip;
   isolation: isolate;
 }
@@ -64,7 +64,7 @@
 /* E1 — letras de gelo: textura do plate + gradiente frio + contorno aço (>= 3:1) */
 .s-hero__word {
   display: inline-block;
-  color: var(--aco-700); /* fallback sem background-clip */
+  color: var(--aco-700);
   background:
     linear-gradient(178deg, rgb(255 255 255 / .55) 0%, rgb(232 241 248 / 0) 38%, rgb(69 94 114 / .15) 62%, rgb(69 94 114 / .7) 100%),
     url("../assets/plate-gelo.webp") center / 140% auto;
@@ -73,142 +73,55 @@
   -webkit-text-stroke: clamp(1px, .12vw, 2px) var(--aco-700);
   text-transform: uppercase;
 }
-.s-hero__stage { position: absolute; inset: 0; pointer-events: none; }
-.s-hero__stage img { pointer-events: auto; }
-/* E2 — bloco de gelo em SVG (textura do plate + faces + brilho especular) */
-.s-hero__ice { position: absolute; left: 8%; width: 84%; top: 51%; height: 51%; }
-/* sombra de contato sob a comida (gradiente próprio, não é sombra padrão) */
-.s-hero__apoio {
-  position: absolute; z-index: 2; height: 7%;
-  background: radial-gradient(closest-side, rgb(69 94 114 / .45), rgb(69 94 114 / 0));
-}
-.s-hero__apoio--temaki { left: 22%; width: 30%; top: 73%; }
-.s-hero__apoio--salmao { left: 52%; width: 27%; top: 72%; }
-/* folhas com o sistema de luz único; o temaki fica na pose natural da foto (sem giro forçado) */
-.s-hero__temaki, .s-hero__salmao { filter: var(--sombra-contato) var(--sombra-projetada); }
-.s-hero__temaki {
+/* a cena gerada fica na frente das letras (a comida sobrepõe a base do título, como no mockup) */
+.s-hero__cena {
   position: absolute; z-index: 2;
-  width: 24vw; left: 20%; top: 17%;
-  rotate: -38deg;
-}
-.s-hero__salmao {
-  position: absolute; z-index: 2;
-  width: 25vw; left: 52%; top: 30%;
-  /* foto vista de cima: inclinada levemente para o plano da face superior do gelo */
-  transform: perspective(60rem) rotateX(30deg);
-  transform-origin: 50% 100%;
-}
-.s-hero__aresta {
-  position: absolute; z-index: 3; left: 9%; width: 82%; top: 73%; height: 9%;
-  background: linear-gradient(180deg, rgb(232 241 248 / 0), rgb(232 241 248 / .55) 40%, rgb(255 255 255 / .35) 60%, rgb(232 241 248 / 0));
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-  pointer-events: none;
+  left: 50%; translate: -50% 0;
+  width: 76vw; max-width: none;
+  top: 30%;
 }
 @media (max-width: 47.99rem) {
-  .s-hero { height: clamp(22rem, 108vw, 30rem); }
-  .s-hero__ice { left: 2%; width: 96%; top: 50%; height: 52%; }
-  .s-hero__apoio--temaki { left: 12%; width: 40%; top: 70%; }
-  .s-hero__apoio--salmao { left: 50%; width: 42%; top: 72%; }
-  .s-hero__temaki { width: 38vw; left: 7%; top: 26%; }
-  .s-hero__salmao { width: 40vw; left: 55%; top: 40%; }
+  .s-hero { height: auto; padding-bottom: var(--sp-5); }
+  .s-hero__cena { position: relative; left: auto; translate: none; width: 118vw; margin: -6vw 0 0 -9vw; bottom: auto; }
 }
 
 /* ============ FLOW (03 + 04) — fita de água estática ============ */
 .flow { position: relative; }
 .flow__fita {
-  position: absolute; z-index: 1; top: -1%; left: -3vw;
-  width: 54vw; height: 101%;
+  position: absolute; z-index: 1; top: -2%; left: 4vw;
+  width: 40vw; height: 102%;
   pointer-events: none;
-  /* termina "por trás" dos drinks, como no mockup (máscara só na própria folha) */
-  -webkit-mask-image: linear-gradient(180deg, #000 78%, transparent 97%);
-  mask-image: linear-gradient(180deg, #000 78%, transparent 97%);
 }
 
 /* ============ 03 PRATOS ============ */
-.s-pratos {
-  position: relative;
-  height: 47.2vw;
-  min-height: 30rem;
-  overflow-x: clip;
-}
+.s-pratos { position: relative; height: 47.2vw; min-height: 26rem; overflow-x: clip; }
 .s-pratos__bambu {
-  position: absolute; z-index: 2; left: -7vw; top: -3%;
-  width: 36vw; height: auto;
+  position: absolute; z-index: 2; left: -12vw; top: 2%;
+  width: 50vw; height: auto;
+  rotate: -28deg;
 }
-.s-pratos figure { position: absolute; z-index: 2; }
-.s-pratos figcaption {
-  margin-top: var(--sp-3);
-  font-size: var(--fs-label); font-weight: 500;
-  letter-spacing: var(--track-label); text-transform: uppercase;
-  color: var(--aco-700);
+.s-pratos__cena {
+  position: absolute; z-index: 2;
+  right: -3vw; top: 2%;
+  width: 72vw; max-width: none;
 }
-.s-pratos__ceviche { left: 29.5%; top: 9%; width: 38vw; text-align: center; }
-/* tigela vista de cima: aro de cerâmica cobalto (a louça real é cobalto) + poço com a foto real */
-.s-pratos__ceviche::before {
-  content: ""; position: absolute; z-index: -1; left: 6%; right: 2%; top: 12%; aspect-ratio: 1;
-  background: radial-gradient(closest-side, rgb(27 47 168 / .28), rgb(69 94 114 / .12) 70%, rgb(69 94 114 / 0));
-  translate: 4% 6%;
-}
-.s-pratos__frame {
-  display: block; position: relative;
-  /* tigela vista a ~35°, o mesmo plano da pedra de sal */
-  transform: perspective(70rem) rotateX(28deg);
-  filter: var(--sombra-contato) var(--sombra-projetada);
-  aspect-ratio: 1; border-radius: 50%;
-  background:
-    radial-gradient(circle at 32% 26%, rgb(255 255 255 / .35), rgb(255 255 255 / 0) 22%),
-    radial-gradient(circle at 50% 50%, #0E1C6B 58%, var(--cobalto) 70%, #2C45C4 86%, #13227A 100%);
-}
-.s-pratos__well {
-  position: absolute; inset: 9%; border-radius: 50%; overflow: hidden;
-}
-.s-pratos__well::after {
-  content: ""; position: absolute; inset: 0; border-radius: 50%;
-  background: radial-gradient(circle at 50% 45%, rgb(14 28 107 / 0) 58%, rgb(14 28 107 / .55) 100%);
-}
-/* zoom na comida: a imagem-folha é maior que o poço */
-.s-pratos__well img {
-  position: absolute; inset: 0; width: 100%; height: 100%; max-width: none;
-  object-fit: cover; object-position: 58% 72%;
-  scale: 1.5; transform-origin: 58% 82%;
-}
-.s-pratos__sal { right: -1%; top: 0; width: 31vw; }
-.s-pratos__sal img { width: 100%; rotate: -44deg; translate: 0 8%; filter: var(--sombra-contato) var(--sombra-projetada); }
-.s-pratos__sal::before {
-  content: ""; position: absolute; z-index: -1; left: 4%; right: 0; top: 48%; height: 26%;
-  background: radial-gradient(closest-side, rgb(69 94 114 / .35), rgb(69 94 114 / 0));
-  rotate: -44deg;
-}
-.s-pratos__sal figcaption { position: absolute; right: 22%; bottom: -8%; white-space: nowrap; }
 @media (max-width: 47.99rem) {
-  .flow__fita { width: 30vw; height: 100%; left: -13vw; }
-  .s-pratos {
-    height: auto; min-height: 0;
-    display: grid; justify-items: center; row-gap: var(--sp-6);
-    padding: var(--sp-6) var(--gutter) var(--sp-7);
-  }
-  .s-pratos__bambu { height: auto; width: 34vw; top: -2rem; left: -4vw; }
-  .s-pratos figure { position: relative; inset: auto; }
-  .s-pratos__ceviche { width: min(74vw, 22rem); justify-self: end; }
-  .s-pratos__sal { width: 58vw; justify-self: end; margin-right: calc(-1 * var(--gutter)); }
-  .s-pratos__sal img { rotate: -24deg; translate: 0 0; }
-  .s-pratos__sal figcaption { position: static; text-align: center; }
+  .flow__fita { width: 34vw; left: -14vw; }
+  .s-pratos { height: auto; min-height: 0; padding: var(--sp-5) 0 var(--sp-6); }
+  .s-pratos__bambu { width: 60vw; left: -22vw; top: -4%; }
+  .s-pratos__cena { position: relative; right: auto; top: auto; width: 100vw; margin-left: 4vw; }
 }
 
 /* ============ 04 BEBIDAS + AVALIAÇÕES ============ */
-.s-bebidas {
-  position: relative;
-  height: 43.4vw; min-height: 32rem;
-  overflow: clip;
+.s-bebidas { position: relative; height: 43.4vw; min-height: 30rem; }
+.s-bebidas__cena {
+  position: absolute; z-index: 2;
+  left: 0; bottom: -2%;
+  width: 64vw; max-width: none;
 }
-.s-bebidas__drinks { position: absolute; inset: 0 auto 0 0; width: 58%; z-index: 2; }
-.s-bebidas__drinks img { position: absolute; bottom: -7%; height: auto; filter: var(--sombra-projetada); }
-.s-bebidas__verde { left: 3%; width: 57%; }
-.s-bebidas__vermelho { left: 45%; width: 44%; bottom: -9%; }
 .s-bebidas__reviews {
   position: absolute; z-index: 2;
-  left: 59%; right: var(--gutter); top: 24%;
+  left: 59%; right: var(--gutter); top: 18%;
   display: grid; row-gap: var(--sp-5);
   --fs-quote: clamp(1.0625rem, 0.7rem + 1.05vw, 1.625rem);
 }
@@ -230,12 +143,9 @@
 .s-bebidas__quote figcaption { margin-top: var(--sp-1); padding-left: calc(var(--fs-quote) * 1.1); font-size: var(--fs-meta); color: var(--texto-meta); }
 
 @media (max-width: 63.99rem) {
-  .s-bebidas { height: auto; min-height: 0; display: grid; overflow: visible; }
-  .s-bebidas__reviews { position: relative; inset: auto; order: -1; padding: var(--sp-6) var(--gutter) var(--sp-5); padding-left: calc(var(--gutter) + 14vw); }
-  .s-bebidas__drinks { position: relative; width: 100%; height: 72vw; overflow: clip; }
-  .s-bebidas__drinks img { bottom: -12%; }
-  .s-bebidas__verde { left: 6%; width: 50%; }
-  .s-bebidas__vermelho { left: 54%; width: 39%; bottom: -14%; }
+  .s-bebidas { height: auto; min-height: 0; display: grid; }
+  .s-bebidas__reviews { position: relative; inset: auto; padding: var(--sp-6) var(--gutter) var(--sp-4); padding-left: calc(var(--gutter) + 10vw); }
+  .s-bebidas__cena { position: relative; left: auto; bottom: auto; width: 100vw; }
   .s-bebidas__nota { white-space: nowrap; font-size: var(--fs-body); }
 }
 
@@ -248,23 +158,15 @@
   grid-template-columns: 9fr 51fr 40fr;
   isolation: isolate;
 }
-.s-local__foto { grid-column: 1 / 3; grid-row: 1; position: relative; margin-left: 9%; }
-/* sem foto nítida de salão/fachada: o salão real vira atmosfera desfocada DE PROPÓSITO */
-.s-local__foto { overflow: clip; overflow-clip-margin: 0; clip-path: inset(0 0 0 -50vw); }
-.s-local__foto img {
-  position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%;
-  filter: blur(10px) brightness(.72) saturate(1.15);
-  scale: 1.12;
-}
-/* véu para leitura do endereço e transição para o preto — CSS, sem sombra */
+/* IMG-04: o lado direito da imagem já termina em preto -> funde com o fundo da seção */
+.s-local__foto { grid-column: 1 / 4; grid-row: 1; position: relative; }
+.s-local__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 0% 50%; }
 .s-local__foto::after {
   content: ""; position: absolute; inset: 0;
-  background:
-    linear-gradient(90deg, var(--noite) 0%, rgb(11 8 6 / 0) 12%, rgb(11 8 6 / 0) 80%, var(--noite) 100%),
-    linear-gradient(0deg, rgb(11 8 6 / .75) 0%, rgb(11 8 6 / 0) 34%);
+  background: linear-gradient(0deg, rgb(11 8 6 / .7) 0%, rgb(11 8 6 / 0) 32%);
 }
 .s-local__end {
-  position: absolute; z-index: 1; left: 0; bottom: var(--sp-5);
+  position: absolute; z-index: 1; left: var(--gutter); bottom: var(--sp-5);
   font-style: normal; font-size: var(--fs-lead); line-height: 1.35;
 }
 .s-local__end a { text-decoration: none; background: linear-gradient(currentColor, currentColor) left bottom / 0 1px no-repeat; transition: background-size .35s var(--ease); }
@@ -296,7 +198,7 @@
 
 @media (max-width: 47.99rem) {
   .s-local { grid-template-columns: 1fr; }
-  .s-local__foto { grid-column: 1; margin-left: 0; aspect-ratio: 4 / 3.4; }
-  .s-local__end { left: var(--gutter); }
+  .s-local__foto { grid-column: 1; aspect-ratio: 4 / 3.4; }
+  .s-local__foto img { object-position: 20% 50%; }
   .s-local__info { grid-column: 1; grid-row: 2; justify-self: stretch; justify-items: start; text-align: left; margin: 0; padding: var(--sp-5) var(--gutter) var(--sp-7); }
 }
