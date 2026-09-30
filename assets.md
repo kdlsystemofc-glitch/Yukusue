@@ -6,11 +6,12 @@ largura nativa (nunca ampliamos por reamostragem).
 
 | Slot (DESIGN.md) | Arquivo(s) em site/assets | Origem | Tipo | Tratamento | Nota |
 |---|---|---|---|---|---|
-| Logo (header/rodapé) | `logo-yukusue-146.png` (146×40) | `imagens/imgi_2_…_n.jpg` (150×150) | FOTO REAL (logo) | recorte da faixa do peixe, sem IA | **Provisório.** AJ-04 não foi entregue; exibido em tamanho nativo. Pendência: vetor do cliente. |
+| Logo (seção escura 05) | `logo-yukusue-146.png` (146×40) | `imagens/imgi_2_…_n.jpg` (150×150) | FOTO REAL (logo) | recorte da faixa do peixe, sem IA | **Provisório.** AJ-04 não foi entregue; exibido em tamanho nativo. Pendência: vetor do cliente. |
 | Hero: temaki | `hero-temaki-699.webp` | `imagens/imgi_47_…_n.jpg` | FOTO REAL recortada | texto "eu só estava com fome" + sorriso removidos por **inpainting algorítmico (OpenCV Telea)** só nos pixels do texto; recorte do temaki da frente (rembg isnet) | **Retocada: texto sobreposto removido por algoritmo, confirmar com o cliente antes de publicar.** A área retocada fica quase toda fora do recorte. |
 | Hero: salmão em rosa | `hero-salmao-800.webp`, `hero-salmao-1057.webp` | `imagens/imgi_57_…_n.jpg` | FOTO REAL recortada | recorte das fatias, sem o prato (rembg) | recorte de foto real, sem pixel novo |
 | Pratos: ceviche | `prato-ceviche-800.webp`, `prato-ceviche-1320.webp` | `imagens/imgi_45_…_n.jpg` | FOTO REAL | **fallback do AJ-01:** crop y 0–1120, acima do texto "CEVICHES FRESCOS E TEMPERADINHOS" | sem pixel novo; quando o AJ-01 chegar, trocar pela foto inteira |
 | Pratos: sashimi na pedra de sal | `prato-sashimi-sal-800.webp`, `prato-sashimi-sal-1440.webp` | `imagens/imgi_27_…_n.jpg` | FOTO REAL | só redimensionamento | — |
+| Pratos: pedra de sal (recorte) | `prato-sal-recorte-456.webp` | `imagens/imgi_27_…_n.jpg` | FOTO REAL recortada | recorte do bloco de sal com salmão, ovas e raspas de limão (rembg) | substitui a foto retangular; sem pixel novo. 456 px de largura: ideal ter foto maior |
 | Bebidas: drink verde | `drink-verde-616.webp` | `imagens/imgi_48_…_n.jpg` | FOTO REAL recortada | recorte (rembg + máscara manual na borda com a esteira) | recorte de foto real, sem pixel novo |
 | Bebidas: drink vermelho | `drink-vermelho-481.webp` | `imagens/imgi_48_…_n.jpg` | FOTO REAL recortada | recorte (rembg isnet + u2net no guarda-chuva) | guarda-chuva cortado na borda direita **já no original** |
 | Final: salão | `salao-800.webp`, `salao-1320.webp` | `imagens/imgi_49_…_n.jpg` | FOTO REAL | crop y 0–1180 | mostra rótulo de saquê de terceiro (Azuma Kirin), produto vendido no local |

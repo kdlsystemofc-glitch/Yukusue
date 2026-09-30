@@ -86,6 +86,10 @@ save("prato-ceviche", Image.open(IMG / F["ceviche"]).convert("RGB").crop((0, 0, 
 # Sashimi na pedra de sal: foto inteira.
 save("prato-sashimi-sal", Image.open(IMG / F["sal"]).convert("RGB"))
 
+# Pedra de sal com salmão, ovas e raspas de limão: recorte do bloco (igual ao conceito do mockup).
+sal = Image.open(IMG / F["sal"]).convert("RGB").crop((20, 580, 520, 1240))
+save("prato-sal-recorte", clean_alpha(remove(sal, session=isnet), 110), alpha=True)
+
 # Drinks: dois recortes separados (a esteira de bambu fica de fora).
 d = Image.open(IMG / F["drinks"]).convert("RGB")
 box = (20, 150, 660, 890)

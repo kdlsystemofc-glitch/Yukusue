@@ -23,10 +23,8 @@
         <li><a href="#avaliacoes">Avaliações</a></li>
         <li class="only-mobile"><a href="#onde">Onde estamos</a></li>
       </ul>
-      <a class="s-header__logo" href="#inicio" aria-label="Yukusue Sushi Antártico — início">
-        <!-- PENDÊNCIA-CLIENTE: logo em vetor/alta. Este é o arquivo real de 150px (imgi_2), exibido em tamanho nativo. -->
-        <img src="assets/logo-yukusue-146.png" width="146" height="40" alt="Yukusue">
-      </a>
+      <!-- Wordmark tipográfico como no mockup (nome real em texto). O logo real (peixe) fica na seção escura. -->
+      <a class="s-header__logo" href="#inicio">Yukusue Sushi</a>
       <ul class="s-header__links s-header__links--b" role="list">
         <li class="only-desktop"><a href="#onde">Onde estamos</a></li>
         <li><a class="s-header__tel" href="tel:+551141215552">(11) 4121-5552</a></li>
@@ -41,15 +39,59 @@
         <span class="sr-only">Sushi Antártico — restaurante japonês em São Bernardo do Campo</span>
       </h1>
       <div class="s-hero__stage" aria-hidden="false">
-        <div class="s-hero__ice" aria-hidden="true">
-          <svg class="s-hero__shards" viewBox="0 0 1000 260" preserveAspectRatio="none" focusable="false">
-            <path d="M40 70 L210 22 L330 58 L250 120 Z" />
-            <path d="M620 30 L780 8 L900 64 L720 96 Z" />
-            <path d="M380 150 L520 110 L600 170 L470 210 Z" />
-            <path d="M820 150 L960 120 L990 200 L860 230 Z" />
-            <path d="M90 170 L200 150 L240 230 L110 245 Z" />
-          </svg>
-        </div>
+        <!-- E2: bloco de gelo decorativo — textura do PLATE-01 moldada em SVG (faces + arestas + brilho) -->
+        <svg class="s-hero__ice" viewBox="0 0 1000 400" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+          <defs>
+            <pattern id="gelo-tex" patternUnits="userSpaceOnUse" width="1000" height="560">
+              <image href="assets/plate-gelo-1376.webp" width="1000" height="560" preserveAspectRatio="xMidYMid slice"/>
+            </pattern>
+            <linearGradient id="gelo-topo" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff" stop-opacity=".5"/>
+              <stop offset="1" stop-color="#fff" stop-opacity=".08"/>
+            </linearGradient>
+            <linearGradient id="gelo-frente" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#fff" stop-opacity=".35"/>
+              <stop offset=".25" stop-color="#718795" stop-opacity=".18"/>
+              <stop offset=".7" stop-color="#455E72" stop-opacity=".22"/>
+              <stop offset="1" stop-color="#E8F1F8" stop-opacity=".5"/>
+            </linearGradient>
+            <linearGradient id="gelo-lados" x1="0" x2="1">
+              <stop offset="0" stop-color="#fff" stop-opacity=".7"/>
+              <stop offset=".08" stop-color="#fff" stop-opacity="0"/>
+              <stop offset=".92" stop-color="#fff" stop-opacity="0"/>
+              <stop offset="1" stop-color="#fff" stop-opacity=".7"/>
+            </linearGradient>
+            <filter id="gelo-contraste" color-interpolation-filters="sRGB">
+              <feComponentTransfer>
+                <feFuncR type="linear" slope="1.9" intercept="-.62"/>
+                <feFuncG type="linear" slope="1.8" intercept="-.52"/>
+                <feFuncB type="linear" slope="1.6" intercept="-.34"/>
+              </feComponentTransfer>
+            </filter>
+            <filter id="gelo-f" x="-3%" y="-8%" width="106%" height="116%" color-interpolation-filters="sRGB">
+              <feTurbulence type="fractalNoise" baseFrequency="0.012 0.02" numOctaves="2" seed="8" result="n"/>
+              <feDisplacementMap in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G" result="d"/>
+              <feGaussianBlur in="d" stdDeviation="6" result="b"/>
+              <feSpecularLighting in="b" surfaceScale="8" specularConstant=".65" specularExponent="30" lighting-color="#fff" result="s">
+                <feDistantLight azimuth="240" elevation="55"/>
+              </feSpecularLighting>
+              <feComposite in="s" in2="d" operator="in" result="si"/>
+              <feMerge><feMergeNode in="d"/><feMergeNode in="si"/></feMerge>
+            </filter>
+          </defs>
+          <g filter="url(#gelo-f)">
+            <path d="M40 150 C 30 95 70 70 140 66 L 460 52 C 640 44 820 36 920 50 C 972 58 990 92 982 140 L 976 190 C 700 205 300 212 48 200 C 28 188 32 170 40 150 Z" fill="url(#gelo-tex)" opacity=".9" filter="url(#gelo-contraste)"/>
+            <path d="M40 150 C 30 95 70 70 140 66 L 460 52 C 640 44 820 36 920 50 C 972 58 990 92 982 140 L 976 190 C 700 205 300 212 48 200 C 28 188 32 170 40 150 Z" fill="url(#gelo-topo)"/>
+            <path d="M48 200 C 300 212 700 205 976 190 C 990 260 996 340 992 402 L 14 402 C 8 330 16 250 48 200 Z" fill="url(#gelo-tex)" opacity=".9" filter="url(#gelo-contraste)"/>
+            <path d="M48 200 C 300 212 700 205 976 190 C 990 260 996 340 992 402 L 14 402 C 8 330 16 250 48 200 Z" fill="url(#gelo-frente)"/>
+            <path d="M14 402 C 8 330 16 250 48 200 C 28 188 32 170 40 150 C 30 95 70 70 140 66 L 460 52 C 640 44 820 36 920 50 C 972 58 990 92 982 140 L 976 190 C 990 260 996 340 992 402 Z" fill="url(#gelo-lados)"/>
+            <path d="M48 200 C 300 212 700 205 976 190" fill="none" stroke="#fff" stroke-width="4" stroke-opacity=".95"/>
+            <path d="M40 150 C 30 95 70 70 140 66 L 460 52 C 640 44 820 36 920 50 C 972 58 990 92 982 140" fill="none" stroke="#fff" stroke-width="3" stroke-opacity=".9"/>
+            <path d="M160 230 L 300 222 L 250 300 Z M 620 240 L 760 228 L 700 320 Z M 420 300 L 520 290 L 470 370 Z" fill="#fff" fill-opacity=".18" stroke="#fff" stroke-opacity=".55" stroke-width="1.5"/>
+          </g>
+        </svg>
+        <span class="s-hero__apoio s-hero__apoio--temaki" aria-hidden="true"></span>
+        <span class="s-hero__apoio s-hero__apoio--salmao" aria-hidden="true"></span>
         <img class="s-hero__temaki" src="assets/hero-temaki-699.webp" width="699" height="898"
              alt="Temaki de salmão com cebolinha">
         <img class="s-hero__salmao" src="assets/hero-salmao-800.webp"
@@ -67,18 +109,16 @@
         <h2 class="sr-only" id="pratos-titulo">Pratos</h2>
         <img class="s-pratos__bambu" src="svg/bambu.svg" alt="" aria-hidden="true" width="460" height="680">
         <figure class="s-pratos__ceviche">
-          <span class="s-pratos__frame"><img src="assets/prato-ceviche-800.webp"
+          <span class="s-pratos__frame"><span class="s-pratos__well"><img src="assets/prato-ceviche-800.webp"
                srcset="assets/prato-ceviche-800.webp 800w, assets/prato-ceviche-1320.webp 1320w"
                sizes="(min-width: 48rem) 40vw, 80vw" width="800" height="679" loading="lazy"
-               alt="Ceviche de polvo com cebola roxa e ovas de peixe em tigela de cerâmica azul-cobalto"></span>
+               alt="Ceviche de polvo com cebola roxa e ovas de peixe em tigela de cerâmica azul-cobalto"></span></span>
           <!-- Texto do próprio cliente (sobreposto na foto original imgi_45) -->
           <figcaption>Ceviches frescos e temperadinhos</figcaption>
         </figure>
         <figure class="s-pratos__sal">
-          <img src="assets/prato-sashimi-sal-800.webp"
-               srcset="assets/prato-sashimi-sal-800.webp 800w, assets/prato-sashimi-sal-1440.webp 1440w"
-               sizes="(min-width: 48rem) 34vw, 70vw" width="800" height="1067" loading="lazy"
-               alt="Salmão com ovas e raspas de limão sobre pedra de sal, ao lado de sashimi, pepino e flores, com fumaça de gelo seco">
+          <img src="assets/prato-sal-recorte-456.webp" width="456" height="636" loading="lazy"
+               alt="Fatias de salmão com ovas e raspas de limão servidas sobre uma pedra de sal rosa">
           <!-- PENDÊNCIA-CLIENTE: nome oficial deste prato no cardápio -->
           <figcaption>Salmão na pedra de sal</figcaption>
         </figure>
@@ -122,6 +162,8 @@
         </address>
       </div>
       <div class="s-local__info">
+        <!-- Logo real (imgi_2, 150px): o fundo preto do arquivo se funde ao fundo da seção. PENDÊNCIA-CLIENTE: vetor. -->
+        <img class="s-local__logo" src="assets/logo-yukusue-146.png" width="146" height="40" alt="Yukusue" loading="lazy">
         <h2 class="s-local__titulo" id="onde-titulo">Onde estamos</h2>
         <!-- PENDÊNCIA-CLIENTE: horário completo por dia. "Abre às 12h" é o único dado do Maps (retrato de um dia). -->
         <p class="s-local__horario">Abre às 12h</p>

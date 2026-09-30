@@ -24,12 +24,11 @@
 .s-header__tel { font-variant-numeric: tabular-nums; }
 .s-header__logo {
   grid-area: logo;
-  display: inline-flex; align-items: center; justify-content: center;
-  background: var(--logo-fundo);
-  padding: 0.35rem 0.9rem;
-  border-radius: var(--radius-pill);
+  font-family: var(--font-display); font-weight: 500;
+  font-size: clamp(1.125rem, 0.55rem + 1.55vw, 2.125rem);
+  letter-spacing: 0.02em; text-transform: uppercase; text-decoration: none;
+  white-space: nowrap;
 }
-.s-header__logo img { width: 9.125rem; height: auto; }
 
 .only-mobile { display: none; }
 @media (max-width: 63.99rem) {
@@ -41,8 +40,7 @@
     row-gap: var(--sp-1);
     padding-block: var(--sp-3) 0;
   }
-  .s-header__logo { justify-self: start; padding: 0.3rem 0.75rem; }
-  .s-header__logo img { width: 7.5rem; }
+  .s-header__logo { justify-self: start; }
   .s-header__links--a { justify-content: space-between; column-gap: var(--sp-3); }
 }
 
@@ -77,34 +75,31 @@
 }
 .s-hero__stage { position: absolute; inset: 0; pointer-events: none; }
 .s-hero__stage img { pointer-events: auto; }
-/* E2 — faixa de gelo abstrata (não é um "bloco" de servir) */
-.s-hero__ice {
-  position: absolute; left: 9.5%; right: 9.5%; top: 56%; bottom: -2%;
-  background:
-    linear-gradient(180deg, rgb(255 255 255 / .75) 0%, rgb(255 255 255 / .25) 35%, rgb(213 230 240 / .1) 100%),
-    url("../assets/plate-gelo-1376.webp") center / cover;
-  clip-path: polygon(0% 22%, 6% 8%, 21% 12%, 34% 0%, 52% 6%, 67% 1%, 82% 9%, 95% 4%, 100% 18%, 99% 100%, 1% 100%);
+/* E2 — bloco de gelo em SVG (textura do plate + faces + brilho especular) */
+.s-hero__ice { position: absolute; left: 8%; width: 84%; top: 51%; height: 51%; }
+/* sombra de contato sob a comida (gradiente próprio, não é sombra padrão) */
+.s-hero__apoio {
+  position: absolute; z-index: 2; height: 7%;
+  background: radial-gradient(closest-side, rgb(69 94 114 / .45), rgb(69 94 114 / 0));
 }
-/* aresta superior iluminada + base mais densa = volume sem sombra padrão */
-.s-hero__ice::before, .s-hero__ice::after { content: ""; position: absolute; inset: 0; pointer-events: none; }
-.s-hero__ice::before { background: linear-gradient(180deg, rgb(255 255 255 / .95) 0 3%, rgb(255 255 255 / 0) 16%); }
-.s-hero__ice::after { background: linear-gradient(180deg, rgb(69 94 114 / 0) 55%, rgb(69 94 114 / .28) 100%); }
-.s-hero__shards { position: absolute; inset: 0; width: 100%; height: 100%; }
-.s-hero__shards path { fill: #fff; fill-opacity: .22; stroke: #fff; stroke-opacity: .7; stroke-width: 1; vector-effect: non-scaling-stroke; }
+.s-hero__apoio--temaki { left: 17%; width: 36%; top: 76%; }
+.s-hero__apoio--salmao { left: 52%; width: 27%; top: 74%; }
 .s-hero__temaki {
   position: absolute; z-index: 2;
-  width: 25vw; left: 19%; top: 21%;
-  rotate: -72deg;
+  width: 28vw; left: 19%; top: 20%;
+  rotate: -64deg;
 }
 .s-hero__salmao {
   position: absolute; z-index: 2;
-  width: 24vw; left: 53%; top: 31%;
+  width: 26vw; left: 52%; top: 31%;
 }
 @media (max-width: 47.99rem) {
   .s-hero { height: clamp(22rem, 108vw, 30rem); }
-  .s-hero__ice { left: 3%; right: 3%; top: 48%; }
-  .s-hero__temaki { width: 42vw; left: 12%; top: 22%; }
-  .s-hero__salmao { width: 44vw; left: 50%; top: 40%; }
+  .s-hero__ice { left: 2%; width: 96%; top: 50%; height: 52%; }
+  .s-hero__apoio--temaki { left: 12%; width: 40%; top: 70%; }
+  .s-hero__apoio--salmao { left: 50%; width: 42%; top: 72%; }
+  .s-hero__temaki { width: 38vw; left: 7%; top: 26%; }
+  .s-hero__salmao { width: 40vw; left: 55%; top: 40%; }
 }
 
 /* ============ FLOW (03 + 04) — fita de água estática ============ */
@@ -120,10 +115,11 @@
   position: relative;
   height: 47.2vw;
   min-height: 30rem;
+  overflow-x: clip;
 }
 .s-pratos__bambu {
-  position: absolute; z-index: 2; left: 0; top: 0;
-  height: 100%; width: auto;
+  position: absolute; z-index: 2; left: -1vw; top: 0;
+  width: 33vw; height: auto;
 }
 .s-pratos figure { position: absolute; z-index: 2; }
 .s-pratos figcaption {
@@ -132,22 +128,39 @@
   letter-spacing: var(--track-label); text-transform: uppercase;
   color: var(--aco-700);
 }
-.s-pratos__ceviche { left: 31%; top: 11%; width: 39vw; text-align: center; }
+.s-pratos__ceviche { left: 29.5%; top: 9%; width: 38vw; text-align: center; }
+/* tigela vista de cima: aro de cerâmica cobalto (a louça real é cobalto) + poço com a foto real */
+.s-pratos__ceviche::before {
+  content: ""; position: absolute; z-index: -1; left: 6%; right: 2%; top: 12%; aspect-ratio: 1;
+  background: radial-gradient(closest-side, rgb(27 47 168 / .28), rgb(69 94 114 / .12) 70%, rgb(69 94 114 / 0));
+  translate: 4% 6%;
+}
 .s-pratos__frame {
-  display: block; position: relative; overflow: hidden;
+  display: block; position: relative;
   aspect-ratio: 1; border-radius: 50%;
-  border: clamp(4px, .6vw, 10px) solid var(--cobalto);
+  background:
+    radial-gradient(circle at 32% 26%, rgb(255 255 255 / .35), rgb(255 255 255 / 0) 22%),
+    radial-gradient(circle at 50% 50%, #0E1C6B 58%, var(--cobalto) 70%, #2C45C4 86%, #13227A 100%);
 }
-/* zoom na comida: a imagem-folha é maior que o círculo */
-.s-pratos__frame img {
-  position: absolute; width: 150%; max-width: none; left: -52%; top: -40%;
+.s-pratos__well {
+  position: absolute; inset: 9%; border-radius: 50%; overflow: hidden;
 }
-.s-pratos__sal { right: 0; top: 8%; width: 31vw; height: 80%; }
-.s-pratos__sal img {
-  width: 100%; height: 100%; object-fit: cover; object-position: 30% 45%;
-  clip-path: polygon(10% 3%, 100% 0, 100% 100%, 0 96%);
+.s-pratos__well::after {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: radial-gradient(circle at 50% 45%, rgb(14 28 107 / 0) 58%, rgb(14 28 107 / .55) 100%);
 }
-.s-pratos__sal figcaption { padding-left: 12%; }
+/* zoom na comida: a imagem-folha é maior que o poço */
+.s-pratos__well img {
+  position: absolute; width: 170%; max-width: none; left: -62%; top: -50%;
+}
+.s-pratos__sal { right: -1%; top: 0; width: 31vw; }
+.s-pratos__sal img { width: 100%; rotate: -44deg; translate: 0 8%; }
+.s-pratos__sal::before {
+  content: ""; position: absolute; z-index: -1; left: 4%; right: 0; top: 48%; height: 26%;
+  background: radial-gradient(closest-side, rgb(69 94 114 / .35), rgb(69 94 114 / 0));
+  rotate: -44deg;
+}
+.s-pratos__sal figcaption { position: absolute; right: 22%; bottom: -8%; white-space: nowrap; }
 @media (max-width: 47.99rem) {
   .flow__fita { width: 58vw; height: 100%; left: -6vw; }
   .s-pratos {
@@ -158,8 +171,9 @@
   .s-pratos__bambu { height: auto; width: 34vw; top: -2rem; left: -4vw; }
   .s-pratos figure { position: relative; inset: auto; }
   .s-pratos__ceviche { width: min(74vw, 22rem); justify-self: end; }
-  .s-pratos__sal { width: 78vw; height: auto; justify-self: end; margin-right: calc(-1 * var(--gutter)); }
-  .s-pratos__sal img { height: auto; aspect-ratio: 4 / 5; }
+  .s-pratos__sal { width: 58vw; justify-self: end; margin-right: calc(-1 * var(--gutter)); }
+  .s-pratos__sal img { rotate: -24deg; translate: 0 0; }
+  .s-pratos__sal figcaption { position: static; text-align: center; }
 }
 
 /* ============ 04 BEBIDAS + AVALIAÇÕES ============ */
@@ -169,9 +183,9 @@
   overflow: clip;
 }
 .s-bebidas__drinks { position: absolute; inset: 0 auto 0 0; width: 58%; z-index: 2; }
-.s-bebidas__drinks img { position: absolute; bottom: -24%; height: auto; }
-.s-bebidas__verde { left: 3%; width: 60%; }
-.s-bebidas__vermelho { left: 47%; width: 47%; bottom: -26%; }
+.s-bebidas__drinks img { position: absolute; bottom: -7%; height: auto; }
+.s-bebidas__verde { left: 3%; width: 57%; }
+.s-bebidas__vermelho { left: 45%; width: 44%; bottom: -9%; }
 .s-bebidas__reviews {
   position: absolute; z-index: 2;
   left: 59%; right: var(--gutter); top: 24%;
@@ -215,7 +229,7 @@
   isolation: isolate;
 }
 .s-local__foto { grid-column: 1 / 3; grid-row: 1; position: relative; margin-left: 9%; }
-.s-local__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 74%; }
+.s-local__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 16%; }
 /* véu para leitura do endereço e transição para o preto — CSS, sem sombra */
 .s-local__foto::after {
   content: ""; position: absolute; inset: 0;
@@ -235,6 +249,7 @@
   display: grid; justify-items: end; text-align: right; row-gap: var(--sp-2);
   padding-block: var(--sp-6);
 }
+.s-local__logo { width: 9.125rem; height: auto; margin-bottom: var(--sp-3); }
 .s-local__titulo {
   font-family: var(--font-body); font-weight: 500;
   font-size: var(--fs-lead); letter-spacing: 0.02em; text-transform: uppercase;

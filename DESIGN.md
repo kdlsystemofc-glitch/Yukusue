@@ -324,3 +324,10 @@ Ajustes técnicos feitos sozinho:
 - **Breakpoints:** header e seção 04 empilham abaixo de 64rem; hero, pratos e localização, abaixo de 48rem. Em 768 a nav de 5 itens e as citações não cabiam no layout de desktop.
 - **Seção 05:** a foto ocupa 9–60% (no mockup, 9–81%). O único recorte real disponível sem garrafa de terceiro tem 815 px, e esticar a 72% ampliava demais.
 - **Temaki:** a foto real é frontal, então o recorte foi girado −72° para ficar "deitado" como no mockup.
+
+## k) Revisão de fidelidade ao mockup (2026-09-30, pedido do cliente interno)
+- Header: wordmark tipográfico "YUKUSUE SUSHI" (Cinzel) no centro, como no mockup. O logo real (peixe) foi para a seção escura 05, onde o fundo preto do arquivo se funde.
+- Hero: a faixa plana virou um **bloco de gelo em SVG** (textura PLATE-01 com contraste realçado, faces de topo e frente, arestas e brilho especular). A comida ficou maior, com sombra de contato em gradiente.
+- Pratos: o ceviche entra numa **tigela vista de cima** (aro cobalto em CSS, cor da louça real) e a foto retangular da pedra de sal virou o **recorte real do bloco de sal** (imgi_27).
+- Fita de água: SVG com refração (feDisplacementMap) e brilho especular; os tracejados saíram. Bambu com degradê por folha e colmo cilíndrico. Cores do bambu amostradas do mockup (#719325).
+- Limites que continuam: a comida é a real (regra de ouro). A seção 05 segue sem foto de entrada/fachada. Fita e bambu continuam ilustrados; para ficarem fotográficos como no mockup, é preciso gerar os plates PLATE-02 e PLATE-03.
