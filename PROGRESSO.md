@@ -41,6 +41,15 @@ Commits: `design pronto` → `header pronta` → `hero pronta` → `pratos pront
 - `site/js/motion.js`: modos full, reduced e paused (+ `?motion=off` para referência); qualidade high/low; atributos data-reveal, data-parallax e data-loop; loops param fora da tela e com a aba oculta; trava contra elemento preso escondido.
 - Regressão: `node tools/motion-test.mjs [secoes] [--cost]`, VERDE. Lighthouse 73 (referência 74, orçamento ≥ 71).
 
+## 2026-09-30 — Motion · Fase 2: seções ✅
+- Hero: parallax de saída da cena de gelo (0 → −24 px), sem entrada (acima da dobra).
+- Pratos: bambu entra da esquerda + balanço contínuo (±1,2°, só high, só na tela); cena entra + parallax 0,06.
+- Bebidas: drinks entram + parallax 0,05; nota e citações em cascata (120 ms).
+- Local: corredor com aproximação lenta (1,06 → 1, 1,1 s); logo, título, horário, serviços e CTA em cascata. Sem parallax (há texto sobre a imagem).
+- Regressão: repouso 0% diferente do estático nas 4 seções (1440 e 390); fita e ancestrais intactos; empilhamento ok; navegação rápida ok.
+- Lighthouse por seção: 72 · 72 · 73 · 72 (orçamento ≥ 71).
+- Custo em headless: inconclusivo (variação da máquina maior que o efeito); precisa de medição em aparelho real.
+
 ## Falta
 - Receber do cliente: pendências do DESIGN.md §i (logo vetor, horário, link de pedido, fotos de salão/fachada, autorizações).
 - Opcional: AJ-01 e AJ-02 (versões por IA) para trocar o crop do ceviche e o retoque algorítmico do temaki.

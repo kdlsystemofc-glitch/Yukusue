@@ -85,7 +85,7 @@
     <section class="s-local" id="onde" aria-labelledby="onde-titulo">
       <div class="s-local__foto">
         <!-- IMG-04 gerada por IA: ambiente decorativo, NÃO é a fachada real. -->
-        <img src="assets/cena-ambiente.webp" srcset="assets/cena-ambiente-800.webp 800w, assets/cena-ambiente.webp 1024w"
+        <img data-reveal="zoom" src="assets/cena-ambiente.webp" srcset="assets/cena-ambiente-800.webp 800w, assets/cena-ambiente.webp 1024w"
              sizes="100vw" width="1024" height="559" loading="lazy" alt="">
         <address class="s-local__end">
           <a href="https://www.google.com/maps/search/?api=1&amp;query=Yukusue+Sushi+Ant%C3%A1rtico%2C+Av.+Ant%C3%A1rtico%2C+240%2C+S%C3%A3o+Bernardo+do+Campo"
@@ -94,13 +94,13 @@
       </div>
       <div class="s-local__info">
         <!-- Logo real (imgi_2, 150px): o fundo preto do arquivo se funde ao fundo da seção. PENDÊNCIA-CLIENTE: vetor. -->
-        <img class="s-local__logo" src="assets/logo-yukusue-146.png" width="146" height="40" alt="Yukusue" loading="lazy">
-        <h2 class="s-local__titulo" id="onde-titulo">Onde estamos</h2>
+        <img class="s-local__logo" data-reveal data-reveal-group="local" src="assets/logo-yukusue-146.png" width="146" height="40" alt="Yukusue" loading="lazy">
+        <h2 class="s-local__titulo" data-reveal data-reveal-group="local" id="onde-titulo">Onde estamos</h2>
         <!-- PENDÊNCIA-CLIENTE: horário completo por dia. "Abre às 12h" é o único dado do Maps (retrato de um dia). -->
-        <p class="s-local__horario">Abre às 12h</p>
-        <p class="s-local__servicos">Refeição no local · Retirada · Entrega</p>
+        <p class="s-local__horario" data-reveal data-reveal-group="local">Abre às 12h</p>
+        <p class="s-local__servicos" data-reveal data-reveal-group="local">Refeição no local · Retirada · Entrega</p>
         <!-- PENDÊNCIA-CLIENTE: link do "Pedir on-line" e se aceita reservas. Até lá, o CTA é o telefone (único canal confirmado). -->
-        <a class="s-local__cta" href="tel:+551141215552">Ligar · (11) 4121-5552</a>
+        <a class="s-local__cta" data-reveal data-reveal-group="local" href="tel:+551141215552">Ligar · (11) 4121-5552</a>
       </div>
     </section>
   </main>
