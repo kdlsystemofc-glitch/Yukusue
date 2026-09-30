@@ -104,5 +104,35 @@
       </div>
     </section>
   </main>
+  <!-- Bootstrap de motion: decide modo/qualidade e carrega GSAP/ScrollTrigger/Lenis (auto-hospedados)
+       DEPOIS do load ou na primeira interação. Sem ele, o site é inteiro visível e estático. -->
+  <script>
+  (function () {
+    var d = document.documentElement, q = new URLSearchParams(location.search), n = navigator, c = n.connection || {};
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var mode = q.get("motion") || (reduce ? "reduced" : "full");
+    try { if (!q.get("motion") && !reduce && localStorage.getItem("y-motion") === "paused") mode = "paused"; } catch (e) {}
+    var low = c.saveData || (n.deviceMemory && n.deviceMemory <= 4) || (n.hardwareConcurrency && n.hardwareConcurrency <= 4) || innerWidth < 768;
+    d.dataset.motion = mode;
+    d.dataset.quality = q.get("q") || (low ? "low" : "high");
+    var started = false, evs = ["pointerdown", "keydown", "wheel", "touchstart", "scroll"];
+    function load(list) {
+      if (!list.length) return;
+      var s = document.createElement("script"); s.src = list[0]; s.async = false;
+      s.onload = function () { load(list.slice(1)); }; document.body.appendChild(s);
+    }
+    function go() {
+      if (started) return; started = true;
+      evs.forEach(function (e) { removeEventListener(e, go); });
+      var list = ["js/vendor/gsap.min.js", "js/vendor/ScrollTrigger.min.js"];
+      if (mode === "full" && d.dataset.quality === "high") list.push("js/vendor/lenis.min.js");
+      list.push("js/motion.js");
+      load(list);
+    }
+    if (mode === "off") return; // ?motion=off: site estático (referência de custo/QA)
+    if (document.readyState === "complete") go(); else addEventListener("load", go, { once: true });
+    evs.forEach(function (e) { addEventListener(e, go, { once: true, passive: true }); });
+  })();
+  </script>
 </body>
 </html>

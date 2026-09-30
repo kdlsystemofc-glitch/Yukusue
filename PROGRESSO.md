@@ -36,6 +36,11 @@ Commits: `design pronto` → `header pronta` → `hero pronta` → `pratos pront
   - favicon (404) e fita como fundo CSS (aspect ratio).
 - Lighthouse mobile: Performance 75 · Acessibilidade 100 · Boas práticas 100 · SEO 100 (screenshots/qa/lighthouse-mobile.json).
 
+## 2026-09-30 — Motion · Fase 1: núcleo (tag motion-base) ✅
+- GSAP 3.15 + ScrollTrigger + Lenis 1.3.26 auto-hospedados em `site/js/vendor/`, carregados por um bootstrap inline depois do load ou na primeira interação.
+- `site/js/motion.js`: modos full, reduced e paused (+ `?motion=off` para referência); qualidade high/low; atributos data-reveal, data-parallax e data-loop; loops param fora da tela e com a aba oculta; trava contra elemento preso escondido.
+- Regressão: `node tools/motion-test.mjs [secoes] [--cost]`, VERDE. Lighthouse 73 (referência 74, orçamento ≥ 71).
+
 ## Falta
 - Receber do cliente: pendências do DESIGN.md §i (logo vetor, horário, link de pedido, fotos de salão/fachada, autorizações).
 - Opcional: AJ-01 e AJ-02 (versões por IA) para trocar o crop do ceviche e o retoque algorítmico do temaki.
