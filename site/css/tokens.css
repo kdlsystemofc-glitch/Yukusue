@@ -23,7 +23,7 @@
   /* Tipografia (DESIGN.md §c) */
   --font-display: "Cinzel", "Marcellus", "Times New Roman", serif;
   --font-body: "Instrument Sans", "Manrope", system-ui, sans-serif;
-  --fs-hero: clamp(3.5rem, 16.2vw, 15rem);
+  --fs-hero: clamp(3.5rem, 17.5vw, 16.25rem);
   --fs-h2: clamp(1.75rem, 5vw, 3rem);
   --fs-lead: clamp(1.0625rem, 0.98rem + 0.4vw, 1.3125rem);
   --fs-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);

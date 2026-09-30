@@ -35,7 +35,29 @@
   </header>
 
   <main id="conteudo">
-    <section class="s-hero" id="inicio" aria-label="Início"></section>
+    <section class="s-hero" id="inicio" aria-labelledby="hero-titulo">
+      <h1 class="s-hero__title" id="hero-titulo">
+        <span class="s-hero__word" data-text="Yukusue">Yukusue</span>
+        <span class="sr-only">Sushi Antártico — restaurante japonês em São Bernardo do Campo</span>
+      </h1>
+      <div class="s-hero__stage" aria-hidden="false">
+        <div class="s-hero__ice" aria-hidden="true">
+          <svg class="s-hero__shards" viewBox="0 0 1000 260" preserveAspectRatio="none" focusable="false">
+            <path d="M40 70 L210 22 L330 58 L250 120 Z" />
+            <path d="M620 30 L780 8 L900 64 L720 96 Z" />
+            <path d="M380 150 L520 110 L600 170 L470 210 Z" />
+            <path d="M820 150 L960 120 L990 200 L860 230 Z" />
+            <path d="M90 170 L200 150 L240 230 L110 245 Z" />
+          </svg>
+        </div>
+        <img class="s-hero__temaki" src="assets/hero-temaki-699.webp" width="699" height="898"
+             alt="Temaki de salmão com cebolinha">
+        <img class="s-hero__salmao" src="assets/hero-salmao-800.webp"
+             srcset="assets/hero-salmao-800.webp 800w, assets/hero-salmao-1057.webp 1057w"
+             sizes="(min-width: 48rem) 26vw, 44vw" width="800" height="691"
+             alt="Sashimi de salmão arrumado em forma de rosa">
+      </div>
+    </section>
 
     <div class="flow">
       <section class="s-pratos" id="pratos" aria-labelledby="pratos-titulo"></section>
