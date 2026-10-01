@@ -1,5 +1,6 @@
 // SEO a partir de seo.config.json (usado por tools/build.mjs). Só dado confirmado do CLIENTE.md.
 import { readFileSync, writeFileSync } from "node:fs";
+import { aplicarLd } from "./cliente.mjs";
 export function seo() {
   const cfg = JSON.parse(readFileSync("seo.config.json", "utf8"));
   const D = cfg.domain ? cfg.domain.replace(/\/$/, "") : null;
@@ -19,6 +20,7 @@ export function seo() {
       addressRegion: "SP", postalCode: "09726-150", addressCountry: "BR" },
     amenityFeature: ["Refeição no local", "Retirada na porta", "Entrega sem contato"].map(n => ({ "@type": "LocationFeatureSpecification", name: n, value: true })),
   };
+  aplicarLd(ld);   // campos de cliente.config.json só quando confirmados
   if (D) Object.assign(ld, { "@id": `${D}/#restaurante`, url: `${D}/`, image: abs(cfg.ogImage) });
 
   const head = `

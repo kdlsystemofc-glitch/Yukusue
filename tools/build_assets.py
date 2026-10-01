@@ -43,7 +43,8 @@ def save(name, im, alpha=False, small=(), q=80):
     """<nome>-<w>.webp para cada degrau pequeno (celular) + -800 + <nome>.webp (largura nativa)."""
     files = []
     steps = [(w, f"{name}-{w}.webp") for w in small if w < im.width]
-    for w, fn in steps + [(800, f"{name}-800.webp"), (im.width, f"{name}.webp")]:
+    mid = [(800, f"{name}-800.webp")] if im.width > 800 else []   # sem cópia idêntica quando a original já tem <= 800px
+    for w, fn in steps + mid + [(im.width, f"{name}.webp")]:
         w = min(w, im.width)
         h = round(im.height * w / im.width)
         r = im.resize((w, h), Image.LANCZOS) if w != im.width else im
@@ -70,6 +71,7 @@ save("bambu", key(PL / "img-06-bambu.png", T=45), alpha=True, small=(480,), q=62
 # Textura de gelo das letras do H1 (PLATE-01)
 save("plate-gelo", Image.open(PL / "Gemini_Generated_Image_s9ein8s9ein8s9ei.jpg").convert("RGB"), q=62)  # textura das letras: decorativa
 
-(OUT / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
+(ROOT / "assets.manifest.json").write_text(  # fora de site/: não é publicado
+    json.dumps(manifest, indent=2), encoding="utf-8")
 for k, v in manifest.items():
     print(k, ", ".join(f"{f['file']} ({f['w']}x{f['h']})" for f in v))

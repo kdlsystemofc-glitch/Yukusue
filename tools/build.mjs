@@ -8,6 +8,7 @@ import { readFileSync, writeFileSync, mkdirSync, statSync } from "node:fs";
 import { minify } from "terser";
 import { gzipSync } from "node:zlib";
 import { seo } from "./seo.mjs";
+import { aplicarHtml, statusPublicacao } from "./cliente.mjs";
 
 const css = ["tokens", "base", "sections"].map(f => readFileSync(`src/css/${f}.css`, "utf8")).join("\n")
   .replace(/url\("\.\.\//g, 'url("');
@@ -25,24 +26,36 @@ const links = /\s*<link rel="stylesheet" href="css\/tokens\.css">\s*<link rel="s
 if (!links.test(html)) throw new Error("links de CSS não encontrados no src/index.html");
 html = html.replace(links, `\n  <style>${cssMin}</style>`);
 
-// SEO (seo.config.json)
-if (!html.includes("<!--SEO:")) throw new Error("marcador <!--SEO:...--> ausente em src/index.html");
-html = html.replace(/\s*<!--SEO:[^>]*-->/, seo());
+// dados do cliente (cliente.config.json)
+html = aplicarHtml(html);
 
-// bootstrap inline
-const boot = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].pop(); // o bootstrap é o último script inline
-const bootMin = (await minify(boot[1], { compress: true, mangle: true })).code;
-html = html.replace(boot[0], `<script>${bootMin}</script>`);
-writeFileSync("site/index.html", html);
-
+// JS próprio minificado (antes do bootstrap, para o hash ser do arquivo final)
 mkdirSync("site/js", { recursive: true });
-const report = [];
+const ownJs = [];
 for (const f of ["motion", "cinema"]) {
   const src = readFileSync(`src/js/${f}.js`, "utf8");
   const out = (await minify(src, { compress: true, mangle: true, format: { comments: /^!/ } })).code;
   writeFileSync(`site/js/${f}.min.js`, out);
-  report.push([`js/${f}.min.js`, src.length, out.length, gzipSync(out).length]);
+  ownJs.push([`js/${f}.min.js`, src.length, out.length, gzipSync(out).length]);
 }
+
+// SEO (seo.config.json)
+if (!html.includes("<!--SEO:")) throw new Error("marcador <!--SEO:...--> ausente em src/index.html");
+html = html.replace(/\s*<!--SEO:[^>]*-->/, seo());
+
+// cache-busting: ?v=<hash do conteúdo> nos scripts carregados pelo bootstrap (permite cache "immutable")
+const { createHash } = await import("node:crypto");
+const hashOf = f => createHash("sha1").update(readFileSync(f)).digest("hex").slice(0, 8);
+
+// bootstrap inline
+const boot = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].pop(); // o bootstrap é o último script inline
+let bootSrc = boot[1];
+for (const f of ["js/vendor/gsap.min.js", "js/vendor/ScrollTrigger.min.js", "js/vendor/lenis.min.js", "js/motion.min.js", "js/cinema.min.js"]) bootSrc = bootSrc.replace(`"${f}"`, `"${f}?v=${hashOf("site/" + f)}"`);
+const bootMin = (await minify(bootSrc, { compress: true, mangle: true })).code;
+html = html.replace(boot[0], `<script>${bootMin}</script>`);
+writeFileSync("site/index.html", html);
+
+const report = [...ownJs];
 for (const f of ["gsap.min.js", "ScrollTrigger.min.js", "lenis.min.js"]) {
   const b = readFileSync(`site/js/vendor/${f}`); report.push([`js/vendor/${f}`, b.length, b.length, gzipSync(b).length]);
 }
@@ -50,3 +63,6 @@ report.push(["index.html (CSS inline)", readFileSync("src/index.html").length + 
 console.log("arquivo".padEnd(30), "fonte".padStart(9), "min".padStart(9), "gzip".padStart(9));
 for (const [n, a, b, g] of report) console.log(n.padEnd(30), (a / 1024).toFixed(1).padStart(8) + "K", (b / 1024).toFixed(1).padStart(8) + "K", (g / 1024).toFixed(1).padStart(8) + "K");
 console.log(`CSS: ${(css.length / 1024).toFixed(1)}K -> ${(cssMin.length / 1024).toFixed(1)}K`);
+
+const falta = statusPublicacao(JSON.parse(readFileSync("seo.config.json", "utf8")).domain);
+console.log(falta.length ? `\nNÃO PRONTO PARA PUBLICAR — falta: ${falta.join("; ")}` : "\nPronto para publicar (pendências do cliente resolvidas).");

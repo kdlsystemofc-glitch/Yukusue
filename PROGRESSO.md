@@ -77,6 +77,37 @@ Commits: `design pronto` → `header pronta` → `hero pronta` → `pratos pront
 - Favicons e webmanifest a partir do LOGO REAL (`python tools/build_icons.py`); o peixe em SVG que eu tinha desenhado saiu.
 - Semântica conferida: 1 h1, 3 h2 em ordem, alt em todas as imagens informativas.
 
+## 2026-10-01 — Rodada final
+### Números finais
+- **QA:** Chromium e WebKit (por HTTP), 5 modos × 14 telas (320 → 5120 px), tudo verde.
+- **Motion:** 60/60 no Chromium e 60/60 no WebKit.
+- **Regressão visual** vs commit anterior: 0% em 1920, 1440, 768, 390 e 320.
+- **Lighthouse mobile** (deploy simulado): 86 · 93 · 92 (mediana 92); servidor simples: 86. **Desktop:** 97. A11y, BP e SEO: 100.
+
+### Polimento: corrigido agora (baixo risco, medido)
+| Item (origem) | Correção | Verificação |
+|---|---|---|
+| Cópias "-800" idênticas à original em 4 imagens (otimização) | não são mais geradas | regressão visual 0% |
+| `manifest.json` de assets dentro de `site/` (não usado) | movido para `assets.manifest.json` (raiz, não publicado) | — |
+| Scripts sem versão no nome: cache longo inseguro (DEPLOY.md) | build adiciona `?v=<hash>` a gsap, ScrollTrigger, lenis, motion e cinema | funciona por file:// e http; motion verde |
+| CSS recomendado do Lenis ausente (motion) | `html.lenis…` em base.css (só age com a classe do Lenis) | regressão de motion verde |
+| Dados do cliente espalhados no HTML | `cliente.config.json` aplicado pelo build; aviso "NÃO PRONTO PARA PUBLICAR" | testado preenchido e vazio |
+| WebKit não testado | QA e motion com `QA_BROWSER=webkit QA_HTTP=1` | ver números abaixo |
+| Telas muito largas | 3840×2160 e 5120×1440 incluídas no QA | verde |
+| Licenças não distribuídas | `site/licenses/` (OFL ×2, MIT Lenis, GSAP) | — |
+
+### Polimento: espera cliente ou aparelho real
+| Item | Por que esperar |
+|---|---|
+| Pedra de sal cortada na própria imagem gerada (IMG-02) | precisa gerar a imagem de novo (decisão e aprovação de imagem) |
+| Logo de 150 px (seção escura, favicons suaves em 192/512) | depende do vetor do cliente |
+| Imagens geradas em 1024 px (suaves em retina e 4K) | gerar versões 2048 px+; depende da aprovação das imagens |
+| Fita esticada no celular deitado | julgamento visual em aparelho real |
+| Custo do motion (fps) e estabilidade do pin no iOS | inconclusivo em headless; ROTEIRO-APARELHO-REAL.md |
+| Rodízio, outra unidade, nomes dos pratos | conteúdo novo; depende do cliente |
+| **CLS 0,09 no desktop** (hero preso: ao carregar o motion, o espaçador empurra para baixo o topo dos pratos que aparecia na tela) | correção muda o visual aprovado: hero com 100% da altura da tela no desktop, ou pin criado só no 1º gesto. Está dentro de "bom" (< 0,1). Decisão de design |
+| Botão de pausa sobre conteúdo no fim da página (canto inferior direito) | não cobre texto nos testes; confirmar em aparelho com barra de navegação |
+
 ## Falta
 - Domínio: preencher `seo.config.json` → `node tools/build.mjs`.
 - Receber do cliente: pendências do DESIGN.md §i (logo vetor, horário, link de pedido, fotos de salão/fachada, autorizações).

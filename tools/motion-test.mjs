@@ -1,6 +1,6 @@
 // Regressão de motion: node tools/motion-test.mjs [secoes=hero,pratos,bebidas,local] [--cost]
 // Sai com código 1 se algo falhar. Screenshots em screenshots/motion/.
-import { chromium } from "playwright";
+import { chromium, webkit } from "playwright";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { resolve, join } from "node:path";
 import { pathToFileURL } from "node:url";
@@ -11,8 +11,8 @@ const doCost = args.includes("--cost");
 const secoes = (args.find(a => !a.startsWith("--")) || "hero,pratos,bebidas,local").split(",");
 const SEL = { hero: ".s-hero", pratos: ".s-pratos", bebidas: ".s-bebidas", local: ".s-local", header: ".s-header" };
 const OUT = resolve("screenshots/motion"); mkdirSync(OUT, { recursive: true });
-const base = pathToFileURL(resolve("site/index.html")).href;
-const browser = await chromium.launch();
+const base = process.env.QA_HTTP ? "http://localhost:8766/" : pathToFileURL(resolve("site/index.html")).href; // QA_HTTP=1 + tools/serve.mjs
+const browser = await (process.env.QA_BROWSER === "webkit" ? webkit : chromium).launch(); // QA_BROWSER=webkit
 const falhas = [];
 const T0 = Date.now();
 const log = (ok, msg) => { console.log(`${ok ? "  ok " : "  FALHA"} ${msg}  [${((Date.now() - T0) / 1000).toFixed(0)}s]`); if (!ok) falhas.push(msg); };

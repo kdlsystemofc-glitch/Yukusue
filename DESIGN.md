@@ -1,5 +1,12 @@
 # DESIGN.md — Yukusue Sushi Antártico
 
+> **Estado atual (2026-10-01).** Este documento registra a evolução do projeto. Algumas decisões das seções iniciais foram superadas pelas seções finais:
+> - **Imagens:** todas geradas por IA (§m), exceto o logo real. Os planos de "foto real" e os ajustes AJ-01…04 de §g ficaram como histórico.
+> - **Fontes:** Cinzel e Instrument Sans continuam, agora auto-hospedadas (otimização), sem Google Fonts.
+> - **Motion:** a especificação de §f foi substituída pelo cinema guiado pela rolagem (ver motion-inventario.md).
+> - **Dados pendentes do cliente:** cliente.config.json e PENDENCIAS-CLIENTE.md.
+
+
 > Etapa: **análise** (nenhuma linha do site escrita ainda). Data: 2026-09-30.
 > Fontes lidas: `CLIENTE.md` (dado bruto do Google Maps), as 16 imagens em `imagens/`,
 > o mockup `design/mockup-full.png.jpg` (768×1376).

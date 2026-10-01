@@ -1,0 +1,55 @@
+{
+  "_como_usar": "Único arquivo com os dados que AINDA FALTAM do cliente (ver PENDENCIAS-CLIENTE.md). Preencha o campo, rode `node tools/build.mjs` e depois a regressão (`node tools/motion-test.mjs && node tools/qa.mjs base`). null = ainda não informado. Dados já confirmados (nome, endereço, telefone) ficam no HTML. O domínio fica em seo.config.json.",
+
+  "horario": {
+    "_doc": "texto: o que aparece na seção 'Onde estamos'. semana: vira openingHoursSpecification no JSON-LD quando confirmado=true. dias em inglês de 2 letras (Mo Tu We Th Fr Sa Su); horas HH:MM. Ex.: [{\"dias\":[\"Tu\",\"We\",\"Th\"],\"abre\":\"12:00\",\"fecha\":\"15:00\"}]",
+    "confirmado": false,
+    "texto": "Abre às 12h",
+    "semana": []
+  },
+
+  "pedidoOnline": {
+    "_doc": "url do pedido on-line (iFood, app próprio...). Preenchida: o botão principal vira 'Pedir on-line' e o telefone continua no topo da página.",
+    "url": null,
+    "rotulo": "Pedir on-line"
+  },
+
+  "whatsapp": {
+    "_doc": "Número com DDI, só dígitos (ex.: 5511999999999). Preenchido: aparece o link 'WhatsApp' abaixo dos serviços e entra no JSON-LD.",
+    "numero": null
+  },
+
+  "reservas": {
+    "_doc": "aceita: true/false. canal: texto curto (ex.: 'pelo WhatsApp'). Entra no JSON-LD (acceptsReservations).",
+    "aceita": null,
+    "canal": null
+  },
+
+  "faixaDePreco": {
+    "_doc": "Hoje 'R$ 80–160' vem de usuários do Google. Só entra no JSON-LD (priceRange) com confirmado=true.",
+    "confirmado": false,
+    "valor": "R$ 80–160"
+  },
+
+  "geo": {
+    "_doc": "Coordenadas confirmadas do salão (o Maps só dá o plus code 8C6Q+J3). Entra no JSON-LD.",
+    "lat": null,
+    "lng": null
+  },
+
+  "redes": {
+    "_doc": "URLs completas. Entram no JSON-LD (sameAs).",
+    "instagram": null,
+    "facebook": null
+  },
+
+  "email": null,
+
+  "autorizacoes": {
+    "_doc": "Não mudam o site; o build avisa 'NÃO PRONTO PARA PUBLICAR' enquanto houver false/null aqui ou o domínio estiver vazio.",
+    "imagensGeradasPorIA": false,
+    "citarAvaliacoesDoGoogle": false,
+    "logoVetorialRecebido": false,
+    "nomesOficiaisDosPratos": false
+  }
+}

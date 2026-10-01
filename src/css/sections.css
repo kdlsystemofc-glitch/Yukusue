@@ -257,3 +257,6 @@
 .s-bebidas__quote { overflow-wrap: break-word; }
 .s-bebidas__nota span { min-width: 0; }
 .s-bebidas__estrela { flex: none; } /* a estrela não é espremida até sumir em telas estreitas */
+
+/* link de WhatsApp (só existe quando cliente.config.json tiver o número) */
+.s-local__whats { display: inline-flex; align-items: center; min-height: 44px; color: var(--creme); font-size: var(--fs-meta); text-underline-offset: .2em; }

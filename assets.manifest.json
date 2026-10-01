@@ -30,11 +30,6 @@
       "h": 366
     },
     {
-      "file": "cena-pratos-800.webp",
-      "w": 728,
-      "h": 555
-    },
-    {
       "file": "cena-pratos.webp",
       "w": 728,
       "h": 555
@@ -45,11 +40,6 @@
       "file": "cena-drinks-480.webp",
       "w": 480,
       "h": 331
-    },
-    {
-      "file": "cena-drinks-800.webp",
-      "w": 800,
-      "h": 551
     },
     {
       "file": "cena-drinks.webp",
@@ -81,11 +71,6 @@
       "h": 659
     },
     {
-      "file": "fita-agua-800.webp",
-      "w": 466,
-      "h": 1024
-    },
-    {
       "file": "fita-agua.webp",
       "w": 466,
       "h": 1024
@@ -96,11 +81,6 @@
       "file": "bambu-480.webp",
       "w": 480,
       "h": 466
-    },
-    {
-      "file": "bambu-800.webp",
-      "w": 576,
-      "h": 559
     },
     {
       "file": "bambu.webp",

@@ -68,3 +68,9 @@ p { text-wrap: pretty; }
 /* Recorte horizontal na largura da tela (não na coluna de 1600px). "clip" não cria contêiner de rolagem:
    o pin do hero e a fita continuam funcionando; overflow não é transform/filter/opacity. */
 main { overflow-x: clip; }
+
+/* CSS recomendado pelo Lenis (rolagem suave): só age com a classe que o próprio Lenis põe no <html> */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }

@@ -2,16 +2,18 @@
 // modos: base (padrão) | zoom (texto 200%) | nofont (Google Fonts bloqueado) | reduced | dark
 // Para cada tela: rolagem horizontal, texto cortado/sobreposto, alvos de toque < 44px,
 // erros de console e screenshot da página inteira em screenshots/qa/<modo>/<tela>.png
-import { chromium } from "playwright";
+import { chromium, webkit } from "playwright";
+const ENGINE = process.env.QA_BROWSER === "webkit" ? webkit : chromium; // QA_BROWSER=webkit
 import { mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { pathToFileURL } from "node:url";
 
 const modo = process.argv[2] || "base";
-const telas = [[2560,1440],[1920,1080],[1440,900],[1366,768],[1280,720],[1024,768],[768,1024],[430,932],[390,844],[360,740],[320,568],[844,390]];
-const out = resolve("screenshots/qa", modo); mkdirSync(out, { recursive: true });
-const url = pathToFileURL(resolve(process.env.QA_PAGE || "site/index.html")).href;
-const browser = await chromium.launch();
+const telas = [[5120,1440],[3840,2160],[2560,1440],[1920,1080],[1440,900],[1366,768],[1280,720],[1024,768],[768,1024],[430,932],[390,844],[360,740],[320,568],[844,390]];
+const out = resolve("screenshots/qa", (process.env.QA_BROWSER || "chromium") + "-" + modo); mkdirSync(out, { recursive: true });
+// QA_HTTP=1: via http://localhost:8766 (tools/serve.mjs). WebKit bloqueia fontes/imagens em file:// (origem nula).
+const url = process.env.QA_HTTP ? "http://localhost:8766/" : pathToFileURL(resolve(process.env.QA_PAGE || "site/index.html")).href;
+const browser = await ENGINE.launch();
 let falhas = 0;
 
 for (const [w, h] of telas) {
@@ -23,7 +25,7 @@ for (const [w, h] of telas) {
   });
   const page = await ctx.newPage();
   const erros = [];
-  page.on("console", m => { if (m.type() === "error") erros.push(m.text()); });
+  page.on("console", m => { if (m.type() === "error" && !(modo === "nofont" && /ERR_FAILED|cancelled|Load cannot follow|Failed to load resource/i.test(m.text()))) erros.push(m.text()); }); // nofont: ignora o bloqueio provocado pelo próprio teste
   page.on("pageerror", e => erros.push(e.message));
   if (modo === "nofont") await page.route(/\.woff2$|fonts\.(googleapis|gstatic)\.com/, r => r.abort()); // fontes locais bloqueadas: testa o fallback
   await page.goto(url, { waitUntil: "networkidle" });
