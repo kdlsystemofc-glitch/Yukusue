@@ -6,7 +6,9 @@ Somente a pasta **`site/`**, que é a saída do build. Não publicar `src/`, `de
 Antes de publicar:
 ```
 python tools/build_assets.py   # imagens (só quando design/plates mudar)
-node tools/build.mjs           # src/ -> site/ (CSS inline, JS minificado)
+node tools/build.mjs           # src/ -> site/ (CSS inline, JS minificado, SEO de seo.config.json)
+python tools/build_icons.py    # favicons (só quando o logo mudar)
+node tools/og.mjs              # imagem de compartilhamento (só quando o hero mudar)
 node tools/motion-test.mjs && node tools/qa.mjs base   # regressão
 ```
 
@@ -41,3 +43,7 @@ Também recomendados (todos os arquivos):
 | `fonts/*.woff2` (2 arquivos) | 55 KB | — |
 
 Todo o JS carrega depois do `load` (ou na primeira interação) e não bloqueia a primeira pintura.
+
+## Antes de publicar: domínio
+Preencher `"domain"` em `seo.config.json` (ex.: `"https://www.yukusue.com.br"`) e rodar `node tools/build.mjs`. Isso ativa canonical, og:url, og:image, twitter:image, url/@id/image do JSON-LD, a linha `Sitemap:` do robots.txt e o `<loc>` do sitemap.xml.
+Cache recomendado: `robots.txt`, `sitemap.xml` e `site.webmanifest` com `public, max-age=86400`; `og-image.jpg`, `favicon.ico` e `icons/*` com `public, max-age=604800`.

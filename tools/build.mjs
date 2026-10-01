@@ -7,6 +7,7 @@
 import { readFileSync, writeFileSync, mkdirSync, statSync } from "node:fs";
 import { minify } from "terser";
 import { gzipSync } from "node:zlib";
+import { seo } from "./seo.mjs";
 
 const css = ["tokens", "base", "sections"].map(f => readFileSync(`src/css/${f}.css`, "utf8")).join("\n")
   .replace(/url\("\.\.\//g, 'url("');
@@ -23,6 +24,10 @@ let html = readFileSync("src/index.html", "utf8");
 const links = /\s*<link rel="stylesheet" href="css\/tokens\.css">\s*<link rel="stylesheet" href="css\/base\.css">\s*<link rel="stylesheet" href="css\/sections\.css">/;
 if (!links.test(html)) throw new Error("links de CSS não encontrados no src/index.html");
 html = html.replace(links, `\n  <style>${cssMin}</style>`);
+
+// SEO (seo.config.json)
+if (!html.includes("<!--SEO:")) throw new Error("marcador <!--SEO:...--> ausente em src/index.html");
+html = html.replace(/\s*<!--SEO:[^>]*-->/, seo());
 
 // bootstrap inline
 const boot = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].pop(); // o bootstrap é o último script inline

@@ -70,7 +70,15 @@ Commits: `design pronto` → `header pronta` → `hero pronta` → `pratos pront
 - Lighthouse mobile 72 → **93** (deploy simulado) / 87 (servidor simples). Desktop 95.
 - Regressão de motion verde; QA verde nos 5 modos (zoom 200% corrigido).
 
+## 2026-10-01 — SEO local (commit "seo pronto") ✅
+- `seo.config.json`: único lugar do domínio (`"domain": null` por enquanto). Canonical, og:url, og:image, twitter:image, url/@id/image do JSON-LD, Sitemap do robots e os <loc> do sitemap saem comentados até o domínio existir. Gerado por `tools/seo.mjs` dentro de `node tools/build.mjs`.
+- JSON-LD `Restaurant`: só nome, endereço, telefone, culinária e serviços (ficha oficial). Preço, horário, geo, reservas e cardápio ficam comentados como pendência; sem aggregateRating (nota do Google é de terceiros).
+- OG/Twitter 1200x630 (`site/og-image.jpg`) a partir do hero aprovado (`node tools/og.mjs`).
+- Favicons e webmanifest a partir do LOGO REAL (`python tools/build_icons.py`); o peixe em SVG que eu tinha desenhado saiu.
+- Semântica conferida: 1 h1, 3 h2 em ordem, alt em todas as imagens informativas.
+
 ## Falta
+- Domínio: preencher `seo.config.json` → `node tools/build.mjs`.
 - Receber do cliente: pendências do DESIGN.md §i (logo vetor, horário, link de pedido, fotos de salão/fachada, autorizações).
 - Opcional: AJ-01 e AJ-02 (versões por IA) para trocar o crop do ceviche e o retoque algorítmico do temaki.
 - Motion: testar em aparelho real (ver motion-inventario.md).

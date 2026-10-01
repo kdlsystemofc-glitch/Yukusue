@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+# Sitemap: <domínio>/sitemap.xml  (ativa sozinho quando seo.config.json tiver "domain")

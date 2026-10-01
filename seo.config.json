@@ -1,0 +1,9 @@
+{
+  "_comentario": "Único lugar do domínio. Enquanto 'domain' for null, canonical, og:url, og:image, twitter:image, url/@id/image do JSON-LD, o Sitemap do robots.txt e os <loc> do sitemap.xml saem comentados. Preencha como 'https://www.exemplo.com.br' (sem barra final) e rode: node tools/build.mjs",
+  "domain": null,
+  "siteName": "Yukusue Sushi Antártico",
+  "locale": "pt_BR",
+  "themeColor": "#E8F1F8",
+  "ogImage": "og-image.jpg",
+  "ogImageAlt": "Yukusue Sushi Antártico — temaki e sashimi de salmão sobre um bloco de gelo"
+}
