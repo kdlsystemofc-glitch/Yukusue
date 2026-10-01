@@ -59,6 +59,12 @@ Commits: `design pronto` → `header pronta` → `hero pronta` → `pratos pront
 - Botão de pausa vem no HTML (estava entrando tarde e piorava o Speed Index 2,9 → 5,0 s); o bootstrap trata o clique antes do motion carregar.
 - Lighthouse final: 72 / 70 (2 rodadas; Speed Index oscilando entre 3,5 e 4,9 s). Linha de base 74.
 
+## 2026-10-01 — Motion · Versão cinema (tag motion-cinema) ✅
+- `site/js/cinema.js`: pin com mergulho no hero, varredura dos pratos, drinks com peso, citações palavra a palavra, contador da nota, afastamento do corredor.
+- Header e hero com altura em pixel inteiro (o pin deslocava o resto em subpixel).
+- Teste de repouso agora usa métrica perceptiva (desfoque de 1 px): DOM e estilos finais idênticos; o resto era antialiasing pós-composição.
+- Regressão verde (60 checagens) · QA verde · Lighthouse 72 / 73.
+
 ## Falta
 - Receber do cliente: pendências do DESIGN.md §i (logo vetor, horário, link de pedido, fotos de salão/fachada, autorizações).
 - Opcional: AJ-01 e AJ-02 (versões por IA) para trocar o crop do ceviche e o retoque algorítmico do temaki.

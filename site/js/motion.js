@@ -35,7 +35,7 @@
 
   /* ---------------------------------------------------------------- Lenis */
   if (mode === "full" && quality === "high" && window.Lenis) {
-    state.lenis = new window.Lenis({ lerp: 0.1, anchors: true, autoRaf: false, smoothWheel: true, syncTouch: false });
+    state.lenis = new window.Lenis({ lerp: 0.075, anchors: true, autoRaf: false, smoothWheel: true, syncTouch: false });
     if (ST) state.lenis.on("scroll", ST.update);
     gsap.ticker.add(function (t) { state.lenis && state.lenis.raf(t * 1000); });
     gsap.ticker.lagSmoothing(0);
@@ -65,7 +65,10 @@
     var dur = 0.6 + Math.min(0.3, (el.offsetHeight || 0) / 2000); // 600–900ms: peças maiores, mais lentas
     gsap.to(el, {
       opacity: 1, x: 0, y: 0, scale: 1, duration: el.dataset.reveal === "zoom" ? 1.1 : dur, delay: delay, ease: EASE, overwrite: "auto",
-      onComplete: function () { startLoop(el); }
+      onComplete: function () {
+        if (!el.dataset.loop && !el.dataset.parallax) gsap.set(el, { clearProps: "transform,opacity" }); // repouso sem camada extra
+        startLoop(el);
+      }
     });
   }
 
@@ -173,6 +176,7 @@
     state.loops.push(L);
     loopIO.observe(el);
   }
+  state.startLoop = startLoop;
   // Elementos com loop que já estavam visíveis (sem entrada) começam a flutuar agora.
   document.querySelectorAll("[data-loop]").forEach(function (el) { if (el.__revealed) startLoop(el); });
 
@@ -198,6 +202,7 @@
   state.pause = function () { setPaused(true, "user"); };
   state.resume = function () { setPaused(false, "user"); };
   state.toggle = function () { setPaused(!state.userPaused, "user"); };
+  Object.defineProperty(state, "paused", { get: function () { return state.userPaused; } });
   document.addEventListener("visibilitychange", function () { setPaused(document.hidden, "hidden"); });
 
   /* ---------------------------------------------------------------- debug p/ testes */

@@ -35,7 +35,7 @@ for (const [w, h] of telas) {
   });
   const r = await page.evaluate(() => {
     const res = { overflow: document.documentElement.scrollWidth - innerWidth, cortado: [], sobreposto: [], toque: [] };
-    const vis = el => { const s = getComputedStyle(el); return s.visibility !== "hidden" && s.display !== "none" && el.getClientRects().length && !el.closest(".sr-only,.skip"); };
+    const vis = el => { const s = getComputedStyle(el); return s.visibility !== "hidden" && s.display !== "none" && el.getClientRects().length && !el.closest(".sr-only,.skip,.w"); }; // .w = palavra ainda mascarada (cinema.js)
     // textos: elementos-folha com texto
     const textos = [...document.querySelectorAll("body *")].filter(e => vis(e) && [...e.childNodes].some(n => n.nodeType === 3 && n.textContent.trim()));
     for (const e of textos) {

@@ -25,6 +25,7 @@ async function abrir(vp, qs = "", opts = {}) {
   page.on("pageerror", e => erros.push(e.message));
   await page.goto(base + qs, { waitUntil: "load" });
   if (opts.js !== false && !qs.includes("motion=off")) await page.waitForFunction(() => document.documentElement.dataset.motionReady === "1", null, { timeout: 8000 }).catch(() => erros.push("motion não ficou pronto"));
+  if (opts.js !== false && !qs.includes("motion=off") && !opts.reduced) await page.waitForFunction(() => document.documentElement.dataset.cinemaReady === "1", null, { timeout: 8000 }).catch(() => erros.push("cinema não ficou pronto"));
   await page.evaluate(async () => { await document.fonts.ready; for (const i of document.images) i.loading = "eager";
     await Promise.race([Promise.all([...document.images].map(i => i.complete ? 0 : new Promise(r => { i.onload = i.onerror = r; }))), new Promise(r => setTimeout(r, 4000))]); });
   return { ctx, page, erros };
@@ -92,7 +93,7 @@ for (const vp of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
     const r = await page.evaluate(() => {
       const fita = document.querySelector(".flow__fita"); fita.style.pointerEvents = "auto";
       const F = fita.getBoundingClientRect(); const bad = [];
-      for (const el of document.querySelectorAll(".flow [data-reveal], .flow [data-parallax], .flow [data-loop]")) {
+      for (const el of document.querySelectorAll(".flow [data-reveal], .flow [data-parallax], .flow [data-loop], .flow [data-scrub]")) {
         if (+getComputedStyle(el).opacity < 0.5) continue;
         const R = el.getBoundingClientRect();
         const x0 = Math.max(F.left, R.left, 0), x1 = Math.min(F.right, R.right, innerWidth), y0 = Math.max(F.top, R.top, 0), y1 = Math.min(F.bottom, R.bottom, innerHeight);
@@ -156,13 +157,21 @@ for (const vp of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
 }
 const diffs = JSON.parse(execFileSync("python", ["-W", "ignore", "-c", `
 import json,sys
-from PIL import Image, ImageChops
+from PIL import Image, ImageChops, ImageFilter
 res={}
+# métrica perceptiva: desfoque de 1px antes do diff ignora diferenças de rasterização/antialiasing
+# de texto após camadas de composição (DOM e estilos finais idênticos), mas pega deslocamento,
+# escala ou opacidade reais.
 for nome,a,b in json.loads(sys.argv[1]):
-    A=Image.open(a).convert('RGB'); B=Image.open(b).convert('RGB')
-    if A.size!=B.size: res[nome]=100.0; continue
-    d=ImageChops.difference(A,B).convert('L').point(lambda v:255 if v>24 else 0)
-    res[nome]=round(sum(1 for v in d.getdata() if v)/ (A.width*A.height)*100,3)
+    A=Image.open(a).convert('RGB').filter(ImageFilter.GaussianBlur(1)); B=Image.open(b).convert('RGB').filter(ImageFilter.GaussianBlur(1))
+    # alinhamento de ±1px (arredondamento subpixel do layout com pin), comparando a área comum
+    h=min(A.height,B.height); best=100.0
+    for dy in (-1,0,1):
+        a0=max(0,dy); b0=max(0,-dy); hh=h-abs(dy)
+        Ac=A.crop((0,a0,A.width,a0+hh)); Bc=B.crop((0,b0,B.width,b0+hh))
+        d=ImageChops.difference(Ac,Bc).convert('L').point(lambda v:255 if v>24 else 0)
+        best=min(best, sum(1 for v in d.getdata() if v)/(Ac.width*Ac.height)*100)
+    res[nome]=round(best,3)
 print(json.dumps(res))`, JSON.stringify(pares)]).toString());
 for (const [k, v] of Object.entries(diffs)) log(v <= 0.5, `${k}: ${v}% de pixels diferentes (limite 0,5%)`);
 

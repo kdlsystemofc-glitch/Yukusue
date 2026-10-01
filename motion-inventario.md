@@ -1,4 +1,20 @@
-# motion-inventario.md — todas as animações (2026-10-01)
+# motion-inventario.md — todas as animações (2026-10-01, versão cinema)
+
+## Versão cinema (`site/js/cinema.js`) — tomadas guiadas pela rolagem
+Substitui as entradas e o parallax discretos da versão anterior nos elementos marcados com `data-scrub`. Cada tomada é amarrada à rolagem (scrub 0,9 s) e **termina no quadro estático aprovado**.
+
+| Tomada | O que acontece | Trecho de rolagem |
+|---|---|---|
+| Hero · mergulho no gelo | a página segura o hero; o título cresce 1,45× e se dissolve; a cena do gelo aproxima até 1,5× e é levada para cima pela rolagem (sem tempo morto) | pin de 90% da altura da tela (só se o hero tiver ≥ 70% da tela; no celular, mergulho sem pin, durante a saída) |
+| Pratos · varredura | o bambu varre da esquerda (−16vw → 0) e os pratos sobem da câmera (y +16vw, escala 0,78 → 1, fade); depois, balanço do bambu | do topo da seção entrando até 25% da tela |
+| Bebidas · peso | os drinks sobem (y +14vw, escala 0,92 → 1, fade) | idem |
+| Avaliações · máscara | citações palavra a palavra saindo de uma máscara (18 ms por palavra); nota conta 0,0 → 4,3 e 0 → 2.722 | dispara a 82–85% da tela, uma vez; o texto original é restaurado no fim |
+| Local · afastamento | o corredor começa aproximado (1,35×) e escuro e abre até o enquadramento; logo, título, horário, serviços, CTA e endereço entram em cascata | da seção entrando até o fim da página |
+
+Parâmetros do roteiro anterior relaxados a pedido ("impactante e cinematográfico"): deslocamentos acima de 24 px e duração ligada à rolagem em vez de 600–900 ms.
+Mantido: só transform e opacity; fita e ancestrais intocados; nada acima da dobra depende de JS; reduced = sem cinema (só fade); pausado = tudo no quadro final.
+A tabela abaixo descreve a versão anterior; os elementos com `data-scrub` passaram para o cinema.
+
 
 Motor: GSAP 3.15 + ScrollTrigger + Lenis 1.3.26, auto-hospedados (`site/js/vendor/`), carregados depois do `load` ou na primeira interação. Código: `site/js/motion.js`.
 Propriedades animadas: **só transform (x, y, yPercent, scale, rotation) e opacity, só em camadas-folha.**

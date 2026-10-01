@@ -7,6 +7,7 @@
   align-items: center;
   column-gap: var(--sp-4);
   min-height: clamp(4.25rem, 2.5rem + calc(5.5 * var(--vw)), 7.5rem);
+  min-height: round(clamp(4.25rem, 2.5rem + calc(5.5 * var(--vw)), 7.5rem), 1px); /* pixel inteiro: sem deslocamento subpixel abaixo */
 }
 .s-header__links {
   display: flex; flex-wrap: wrap; align-items: center;
@@ -58,6 +59,7 @@
 .s-hero {
   position: relative;
   height: clamp(24rem, calc(52 * var(--vw)), 50rem);
+  height: round(clamp(24rem, calc(52 * var(--vw)), 50rem), 1px); /* pixel inteiro: sem deslocamento subpixel abaixo */
   overflow: hidden; /* fallback Safari < 16 */
   overflow: clip;
   isolation: isolate;
@@ -228,3 +230,7 @@
   .s-local__end { position: static; max-width: none; padding: var(--sp-4) var(--gutter) 0; }
   .s-local__info { grid-column: 1; grid-row: 2; justify-self: stretch; justify-items: start; text-align: left; margin: 0; padding: var(--sp-5) var(--gutter) var(--sp-7); }
 }
+
+/* cinema.js: máscara palavra a palavra nas citações (spans criados só por JS) */
+.s-bebidas__quote .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
+.s-bebidas__quote .wi { display: inline-block; }
