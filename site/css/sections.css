@@ -109,7 +109,7 @@
 }
 
 /* ============ 03 PRATOS ============ */
-.s-pratos { position: relative; height: calc(47.2 * var(--vw)); min-height: 26rem; overflow-x: hidden; overflow-x: clip; }
+.s-pratos { position: relative; height: calc(47.2 * var(--vw)); min-height: 26rem; } /* sem recorte aqui: o excesso é cortado pela página (body), não pela coluna de 1600px */
 .s-pratos__bambu {
   position: absolute; z-index: 2; left: calc(-12 * var(--vw)); top: 2%;
   width: calc(50 * var(--vw)); height: auto;
@@ -121,13 +121,12 @@
   right: calc(-3 * var(--vw)); top: 2%;
   width: calc(72 * var(--vw)); max-width: none;
 }
-/* telas > 1600px: a pedra de sal vem cortada na imagem gerada; a borda some suavemente em vez de terminar no ar */
-@media (min-width: 100.01rem) {
-  .s-pratos__cena {
-    -webkit-mask-image: linear-gradient(90deg, #000 88%, transparent);
-    mask-image: linear-gradient(90deg, #000 88%, transparent);
-  }
+/* a pedra de sal vem cortada na própria imagem gerada: a borda direita sempre some suavemente */
+.s-pratos__cena {
+  -webkit-mask-image: linear-gradient(90deg, #000 86%, transparent 99%);
+  mask-image: linear-gradient(90deg, #000 86%, transparent 99%);
 }
+
 @media (max-width: 47.99rem) {
   .flow__fita { width: calc(34 * var(--vw)); left: calc(-14 * var(--vw)); }
   .s-pratos { height: auto; min-height: 0; padding: var(--sp-5) 0 var(--sp-6); }

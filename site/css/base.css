@@ -64,3 +64,7 @@ p { text-wrap: pretty; }
   .motion-toggle__txt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .motion-toggle { padding: 0; justify-content: center; }
 }
+
+/* Recorte horizontal na largura da tela (não na coluna de 1600px). "clip" não cria contêiner de rolagem:
+   o pin do hero e a fita continuam funcionando; overflow não é transform/filter/opacity. */
+main { overflow-x: clip; }
