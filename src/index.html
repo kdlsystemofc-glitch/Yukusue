@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Yukusue Sushi Antártico — Restaurante japonês em São Bernardo do Campo</title>
+  <meta name="description" content="Restaurante japonês na Av. Antártico, 240, Jardim do Mar, São Bernardo do Campo. Refeição no local, retirada e entrega. Telefone (11) 4121-5552.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231A1819'/%3E%3Cpath d='M7 16c4-5 11-6 16-2l3-3v10l-3-3c-5 4-12 3-16-2z' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linejoin='round'/%3E%3Ccircle cx='21' cy='15' r='1.2' fill='%23fff'/%3E%3C/svg%3E">
+  <!-- Candidato a LCP por breakpoint (medido): desktop = cena do hero; celular = cena dos pratos. Só ele recebe prioridade alta. -->
+  <link rel="preload" as="image" fetchpriority="high" media="(min-width: 48rem)" href="assets/cena-hero.webp"
+        imagesrcset="assets/cena-hero-480.webp 480w, assets/cena-hero-800.webp 800w, assets/cena-hero.webp 940w"
+        imagesizes="(min-width: 100rem) 1216px, (min-width: 48rem) 76vw, 118vw">
+  <link rel="preload" as="image" fetchpriority="high" media="(max-width: 47.99rem)" href="assets/cena-pratos.webp"
+        imagesrcset="assets/cena-pratos-480.webp 480w, assets/cena-pratos.webp 728w"
+        imagesizes="(min-width: 100rem) 1152px, (min-width: 48rem) 72vw, 100vw">
+  <!-- preload das duas fontes acima da dobra; só em http(s): em file:// o preload com crossorigin falha (sem CORS) e o @font-face já resolve -->
+  <script>if(location.protocol!=="file:")["cinzel-latin-var","instrument-sans-latin-var"].forEach(function(f){var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="";l.href="fonts/"+f+".woff2";document.head.appendChild(l)})</script>
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/sections.css">
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="s-header" id="topo">
+    <nav class="s-header__nav wrap" aria-label="Principal">
+      <ul class="s-header__links s-header__links--a" role="list">
+        <li><a href="#pratos">Pratos</a></li>
+        <li><a href="#bebidas">Bebidas</a></li>
+        <li><a href="#avaliacoes">Avaliações</a></li>
+        <li class="only-mobile"><a href="#onde">Onde estamos</a></li>
+      </ul>
+      <!-- Wordmark tipográfico como no mockup (nome real em texto). O logo real (peixe) fica na seção escura. -->
+      <a class="s-header__logo" href="#inicio">Yukusue Sushi</a>
+      <ul class="s-header__links s-header__links--b" role="list">
+        <li class="only-desktop"><a href="#onde">Onde estamos</a></li>
+        <li><a class="s-header__tel" href="tel:+551141215552">(11) 4121-5552</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="conteudo">
+    <section class="s-hero" id="inicio" aria-labelledby="hero-titulo">
+      <h1 class="s-hero__title" id="hero-titulo">
+        <span class="s-hero__word">Yukusue</span>
+        <span class="sr-only">Sushi Antártico — restaurante japonês em São Bernardo do Campo</span>
+      </h1>
+      <!-- fetchpriority="low": no celular o LCP é a cena dos pratos; no desktop o preload (media) já busca esta imagem com prioridade alta. -->
+      <!-- IMG-01 gerada por IA (DESIGN.md §m): temaki e rosa de salmão sobre bloco de gelo. Fica NA FRENTE do título, como no mockup. -->
+      <img class="s-hero__cena" src="assets/cena-hero.webp" fetchpriority="low"
+           srcset="assets/cena-hero-480.webp 480w, assets/cena-hero-800.webp 800w, assets/cena-hero.webp 940w"
+           sizes="(min-width: 100rem) 1216px, (min-width: 48rem) 76vw, 118vw" width="940" height="418"
+           alt="Temaki de salmão e sashimi de salmão em forma de rosa servidos sobre um bloco de gelo">
+    </section>
+
+    <div class="flow">
+      <!-- IMG-05: fita de água contínua (03→04). Estática: sem transform/filter/opacity nela ou em ancestrais. -->
+      <div class="flow__fita" aria-hidden="true"></div>
+
+      <section class="s-pratos" id="pratos" aria-labelledby="pratos-titulo">
+        <h2 class="sr-only" id="pratos-titulo">Pratos</h2>
+        <img class="s-pratos__bambu" data-scrub data-loop="sway" data-loop-amp="2.4" src="assets/bambu.webp" alt="" aria-hidden="true" width="576" height="559" loading="lazy" fetchpriority="low"
+             srcset="assets/bambu-480.webp 480w, assets/bambu.webp 576w" sizes="(min-width: 100rem) 800px, (min-width: 48rem) 50vw, 60vw">
+        <!-- IMG-02 gerada por IA. PENDÊNCIA-CLIENTE: nomes oficiais dos pratos. -->
+        <img class="s-pratos__cena" data-scrub src="assets/cena-pratos.webp" width="728" height="555"
+             srcset="assets/cena-pratos-480.webp 480w, assets/cena-pratos.webp 728w" sizes="(min-width: 100rem) 1152px, (min-width: 48rem) 72vw, 100vw"
+             alt="Ceviche de polvo com cebola roxa, pepino e ovas em tigela azul-cobalto, ao lado de salmão com ovas e raspas de limão sobre pedra de sal rosa">
+      </section>
+
+      <section class="s-bebidas" id="bebidas" aria-labelledby="bebidas-titulo">
+        <h2 class="sr-only" id="bebidas-titulo">Bebidas e avaliações</h2>
+        <!-- IMG-03 gerada por IA. PENDÊNCIA-CLIENTE: nomes/sabores oficiais dos drinks. -->
+        <img class="s-bebidas__cena" data-scrub src="assets/cena-drinks.webp" width="800" height="551" loading="lazy"
+             srcset="assets/cena-drinks-480.webp 480w, assets/cena-drinks.webp 800w" sizes="(min-width: 100rem) 1024px, (min-width: 64rem) 64vw, 100vw"
+             alt="Dois drinks em taças: um verde de kiwi com limão e outro vermelho de frutas vermelhas com morango">
+        <div class="s-bebidas__reviews" id="avaliacoes">
+          <!-- Nota e total conforme ficha do Google Maps no levantamento (CLIENTE.md). Atualizar antes de publicar. -->
+          <p class="s-bebidas__nota" data-reveal data-reveal-group="reviews">
+            <strong>4,3</strong>
+            <svg class="s-bebidas__estrela" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2.6l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L12 17.4l-5.8 3.1 1.1-6.5L2.6 9.4l6.5-.9z"/></svg>
+            <span>2.722 avaliações no Google</span>
+          </p>
+          <!-- PENDÊNCIA-CLIENTE: autorização para citar avaliações (trechos literais, nome abreviado) -->
+          <figure class="s-bebidas__quote" data-reveal data-reveal-group="reviews">
+            <blockquote><p>Ambiente aconchegante, muito bem estruturado e tranquilo de conversar, a comida é extremamente saborosa e o atendimento é rápido.</p></blockquote>
+            <figcaption>Alziria A. · avaliação no Google</figcaption>
+          </figure>
+          <figure class="s-bebidas__quote" data-reveal data-reveal-group="reviews">
+            <blockquote><p>Fomos prontamente recebidos. […] O espaço é bem iluminado, limpo e possui música ambiente confortável (nada exagerado).</p></blockquote>
+            <figcaption>Víctor M. · avaliação no Google</figcaption>
+          </figure>
+        </div>
+      </section>
+    </div>
+
+    <section class="s-local" id="onde" aria-labelledby="onde-titulo">
+      <div class="s-local__foto">
+        <!-- IMG-04 gerada por IA: ambiente decorativo, NÃO é a fachada real. -->
+        <img data-scrub src="assets/cena-ambiente.webp" srcset="assets/cena-ambiente-480.webp 480w, assets/cena-ambiente-800.webp 800w, assets/cena-ambiente.webp 1024w"
+             sizes="100vw" width="1024" height="559" loading="lazy" alt="">
+        <address class="s-local__end">
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Yukusue+Sushi+Ant%C3%A1rtico%2C+Av.+Ant%C3%A1rtico%2C+240%2C+S%C3%A3o+Bernardo+do+Campo"
+             rel="noopener">Av. Antártico, 240 · Jardim do Mar<br>São Bernardo do Campo – SP</a>
+        </address>
+      </div>
+      <div class="s-local__info">
+        <!-- Logo real (imgi_2, 150px): o fundo preto do arquivo se funde ao fundo da seção. PENDÊNCIA-CLIENTE: vetor. -->
+        <img class="s-local__logo" data-scrub src="assets/logo-yukusue-146.png" width="146" height="40" alt="Yukusue" loading="lazy">
+        <h2 class="s-local__titulo" data-scrub id="onde-titulo">Onde estamos</h2>
+        <!-- PENDÊNCIA-CLIENTE: horário completo por dia. "Abre às 12h" é o único dado do Maps (retrato de um dia). -->
+        <p class="s-local__horario" data-scrub>Abre às 12h</p>
+        <p class="s-local__servicos" data-scrub>Refeição no local · Retirada · Entrega</p>
+        <!-- PENDÊNCIA-CLIENTE: link do "Pedir on-line" e se aceita reservas. Até lá, o CTA é o telefone (único canal confirmado). -->
+        <a class="s-local__cta" data-scrub href="tel:+551141215552">Ligar · (11) 4121-5552</a>
+      </div>
+    </section>
+  </main>
+  <!-- Botão de pausa no HTML (presente desde a 1ª pintura, sem mudança tardia na tela). Funciona antes e depois do motion carregar. -->
+  <button type="button" class="motion-toggle" aria-pressed="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><span class="motion-toggle__txt">Pausar animações</span>
+  </button>
+  <!-- Bootstrap de motion: decide modo/qualidade e carrega GSAP/ScrollTrigger/Lenis (auto-hospedados)
+       DEPOIS do load ou na primeira interação. Sem ele, o site é inteiro visível e estático. -->
+  <script>
+  (function () {
+    var d = document.documentElement, q = new URLSearchParams(location.search), n = navigator, c = n.connection || {};
+    var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var mode = q.get("motion") || (reduce ? "reduced" : "full");
+    try { if (!q.get("motion") && !reduce && localStorage.getItem("y-motion") === "paused") mode = "paused"; } catch (e) {}
+    var low = c.saveData || (n.deviceMemory && n.deviceMemory <= 4) || (n.hardwareConcurrency && n.hardwareConcurrency <= 4) || innerWidth < 768;
+    d.dataset.motion = mode;
+    d.dataset.quality = q.get("q") || (low ? "low" : "high");
+    var btn = document.querySelector(".motion-toggle");
+    if (mode === "reduced" || mode === "off") btn.remove();
+    else {
+      var draw = function (p) {
+        btn.setAttribute("aria-pressed", p ? "true" : "false");
+        btn.querySelector("path").setAttribute("d", p ? "M8 5v14l11-7z" : "M7 5h3.5v14H7zM13.5 5H17v14h-3.5z");
+        btn.querySelector(".motion-toggle__txt").textContent = p ? "Retomar animações" : "Pausar animações";
+      };
+      draw(mode === "paused");
+      btn.addEventListener("click", function () {
+        if (window.YMotion && window.YMotion.toggle) { window.YMotion.toggle(); return; }
+        mode = mode === "paused" ? "full" : "paused"; d.dataset.motion = mode; draw(mode === "paused"); // motion ainda não carregou
+        try { localStorage.setItem("y-motion", mode); } catch (e) {}
+      });
+      document.addEventListener("ymotion:pause", function (e) { draw(e.detail.paused); });
+    }
+    var started = false, evs = ["pointerdown", "keydown", "wheel", "touchstart", "scroll"];
+    function load(list) {
+      if (!list.length) return;
+      var s = document.createElement("script"); s.src = list[0]; s.async = false;
+      s.onload = function () { load(list.slice(1)); }; document.body.appendChild(s);
+    }
+    function go() {
+      if (started) return; started = true;
+      evs.forEach(function (e) { removeEventListener(e, go); });
+      var list = ["js/vendor/gsap.min.js", "js/vendor/ScrollTrigger.min.js"];
+      if (mode === "full" && d.dataset.quality === "high") list.push("js/vendor/lenis.min.js");
+      list.push("js/motion.min.js");
+      if (mode !== "reduced") list.push("js/cinema.min.js");
+      load(list);
+    }
+    if (mode === "off") return; // ?motion=off: site estático (referência de custo/QA)
+    if (document.readyState === "complete") go(); else addEventListener("load", go, { once: true });
+    evs.forEach(function (e) { addEventListener(e, go, { once: true, passive: true }); });
+  })();
+  </script>
+</body>
+</html>

@@ -59,7 +59,8 @@
       gsap.set(bambu, { x: -vw(16), y: vw(4) });
       gsap.set(pcena, { y: vw(16), scale: 0.78, opacity: 0 });
     }
-    shot({ trigger: pratos, start: "top bottom", end: "top 25%" }, function (tl) {
+    // seção já visível quando o motion carrega (celular): nada de esconder o que a pessoa já está vendo
+    if (below(pratos)) shot({ trigger: pratos, start: "top bottom", end: "top 25%" }, function (tl) {
       tl.fromTo(bambu, { x: -vw(16), y: vw(4) }, { x: 0, y: 0, ease: "power2.out", duration: 1 }, 0)
         .fromTo(pcena, { y: vw(16), scale: 0.78, opacity: 0 }, { y: 0, scale: 1, opacity: 1, ease: "power3.out", duration: 1 }, 0.1);
     }, 1);
@@ -70,7 +71,7 @@
   var beb = $(".s-bebidas"), bcena = $(".s-bebidas__cena");
   if (beb && bcena) {
     if (below(beb)) gsap.set(bcena, { y: vw(14), scale: 0.92, opacity: 0 });
-    shot({ trigger: beb, start: "top bottom", end: "top 25%" }, function (tl) {
+    if (below(beb)) shot({ trigger: beb, start: "top bottom", end: "top 25%" }, function (tl) {
       tl.fromTo(bcena, { y: vw(14), scale: 0.92, opacity: 0 }, { y: 0, scale: 1, opacity: 1, ease: "power3.out", duration: 1 }, 0);
     }, 1);
   }
@@ -117,7 +118,7 @@
       gsap.set(limg, { scale: 1.35, opacity: 0.25 });
       gsap.set(parts, { y: 36, opacity: 0 });
     }
-    shot({ trigger: local, start: "top bottom", end: "bottom bottom" }, function (tl) {
+    if (below(local)) shot({ trigger: local, start: "top bottom", end: "bottom bottom" }, function (tl) {
       tl.fromTo(limg, { scale: 1.35, opacity: 0.25 }, { scale: 1, opacity: 1, ease: "power2.out", duration: 1 }, 0)
         .fromTo(parts, { y: 36, opacity: 0 }, { y: 0, opacity: 1, ease: "power3.out", duration: 0.45, stagger: 0.08 }, 0.35);
     }, 1);

@@ -169,7 +169,7 @@
   .s-bebidas { min-height: 0; grid-template-columns: 1fr; }
   .s-bebidas__reviews { grid-column: 1; padding: var(--sp-6) var(--gutter) var(--sp-4); padding-left: calc(var(--gutter) + calc(10 * var(--vw))); }
   .s-bebidas__cena { position: relative; left: auto; bottom: auto; width: calc(100 * var(--vw)); }
-  .s-bebidas__nota { white-space: nowrap; font-size: var(--fs-body); }
+  .s-bebidas__nota { font-size: var(--fs-body); max-width: 100%; } /* cabe numa linha no zoom normal; quebra com zoom de texto */
 }
 
 /* ============ 05 LOCALIZAÇÃO / CTA ============ */
@@ -233,3 +233,27 @@
 /* cinema.js: máscara palavra a palavra nas citações (spans criados só por JS) */
 .s-bebidas__quote .w { display: inline-block; overflow: hidden; vertical-align: top; padding-bottom: .12em; margin-bottom: -.12em; }
 .s-bebidas__quote .wi { display: inline-block; }
+
+/* celular: degraus menores das texturas de fundo (mesmo desenho, menos bytes) */
+@media (max-width: 47.99rem) {
+  .s-hero__word {
+    background:
+      linear-gradient(178deg, rgb(255 255 255 / .55) 0%, rgb(232 241 248 / 0) 38%, rgb(69 94 114 / .15) 62%, rgb(69 94 114 / .7) 100%),
+      url("../assets/plate-gelo-800.webp") center / 140% auto;
+    -webkit-background-clip: text; background-clip: text;
+  }
+  .flow__fita { background-image: url("../assets/fita-agua-300.webp"); }
+}
+
+/* proporção fixa = arquivo original: o degrau de srcset escolhido (480/800/…) não muda o layout */
+.s-hero__cena { aspect-ratio: 940 / 418; }
+.s-pratos__cena { aspect-ratio: 728 / 555; }
+.s-bebidas__cena { aspect-ratio: 800 / 551; }
+.s-pratos__bambu { aspect-ratio: 576 / 559; }
+@media (max-width: 47.99rem) { .s-hero__cena { aspect-ratio: 800 / 356; } } /* = degrau aprovado no celular */
+
+/* zoom de texto 200%: itens da coluna de avaliações não alargam a coluna; palavra longa quebra */
+.s-bebidas__reviews > * { min-width: 0; }
+.s-bebidas__quote { overflow-wrap: break-word; }
+.s-bebidas__nota span { min-width: 0; }
+.s-bebidas__estrela { flex: none; } /* a estrela não é espremida até sumir em telas estreitas */

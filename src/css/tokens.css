@@ -1,0 +1,66 @@
+/* Fontes auto-hospedadas (variáveis, subconjunto latino: cobre pt-BR). Uma face por peso usado,
+   apontando para o mesmo arquivo — igual ao CSS do Google Fonts, para render idêntico. Sem CDN externa. */
+@font-face { font-family: "Cinzel"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/cinzel-latin-var.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Cinzel"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/cinzel-latin-var.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Cinzel"; font-style: normal; font-weight: 700; font-display: swap; src: url("../fonts/cinzel-latin-var.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Instrument Sans"; font-style: normal; font-weight: 400; font-display: swap; src: url("../fonts/instrument-sans-latin-var.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Instrument Sans"; font-style: normal; font-weight: 500; font-display: swap; src: url("../fonts/instrument-sans-latin-var.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+@font-face { font-family: "Instrument Sans"; font-style: normal; font-weight: 600; font-display: swap; src: url("../fonts/instrument-sans-latin-var.woff2") format("woff2"); unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD; }
+
+:root {
+  /* Cor — amostrada do mockup e das fotos reais (DESIGN.md §b) */
+  --gelo-50: #E8F1F8;
+  --gelo-100: #E7F1F5;
+  --gelo-200: #D5E6F0;
+  --aco-300: #A8BDCE;   /* só decorativo */
+  --aco-500: #718795;   /* só texto >= 24px */
+  --aco-700: #455E72;
+  --tinta: #1A1C1D;
+  --noite: #0B0806;
+  --creme: #FCF9F4;
+  --musgo: #596E45;     /* verde do logo real */
+  --musgo-claro: #A9BD92;
+  --musgo-escuro: #4E5E3C;
+  --cobalto: #1B2FA8;   /* cerâmica real (imgi_52) */
+  --madeira: #A6683C;
+  --madeira-escura: #8A5530;
+  --ambar: #F1A60D;
+  --texto-meta: #5F666A;
+  --logo-fundo: #1A1819; /* fundo do logo real */
+
+  /* Tipografia (DESIGN.md §c) */
+  --font-display: "Cinzel", "Marcellus", "Times New Roman", serif;
+  --font-body: "Instrument Sans", "Manrope", system-ui, sans-serif;
+  --fs-hero: clamp(min(3.5rem, 16vw), 17.5vw, 16.25rem); /* min() com vw: com zoom de texto o título não passa da tela */
+  --fs-h2: clamp(1.75rem, 5vw, 3rem);
+  --fs-lead: clamp(1.0625rem, 0.98rem + 0.4vw, 1.3125rem);
+  --fs-body: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --fs-meta: clamp(0.8125rem, 0.78rem + 0.15vw, 0.875rem);
+  --fs-nav: clamp(0.875rem, 0.6rem + 0.75vw, 1.25rem);
+  --fs-label: clamp(0.75rem, 0.72rem + 0.2vw, 0.875rem);
+  --lh-tight: 1.1;
+  --lh-body: 1.55;
+  --track-label: 0.08em;
+
+  /* Espaço — base 0,5rem, fluido */
+  --sp-1: clamp(0.25rem, 0.2rem + 0.2vw, 0.375rem);
+  --sp-2: clamp(0.5rem, 0.45rem + 0.25vw, 0.75rem);
+  --sp-3: clamp(0.75rem, 0.65rem + 0.5vw, 1.125rem);
+  --sp-4: clamp(1rem, 0.85rem + 0.75vw, 1.5rem);
+  --sp-5: clamp(1.5rem, 1.2rem + 1.5vw, 2.5rem);
+  --sp-6: clamp(2rem, 1.5rem + 2.5vw, 3.75rem);
+  --sp-7: clamp(3rem, 2rem + 5vw, 6rem);
+  --sp-8: clamp(4rem, 2.5rem + 7.5vw, 9rem);
+  --gutter: clamp(1rem, 5.9vw, 5.25rem);
+  --max: 90rem;
+  /* "vw com teto": acima de 1600px de tela a composição para de crescer (imagens geradas têm ~1000px) */
+  --vw: min(1vw, 16px);
+
+  /* Sistema de luz único (AUDITORIA.md): luz de cima-esquerda, sombra para baixo-direita, tom aço */
+  --sombra-contato: drop-shadow(0.25rem 0.35rem 0.25rem rgb(69 94 114 / .35));
+  --sombra-projetada: drop-shadow(1.25rem 1.75rem 1.75rem rgb(69 94 114 / .28));
+
+  --radius-pill: 999px;
+  --stroke: 1px;
+  --ease: cubic-bezier(.2, .7, .2, 1);
+}

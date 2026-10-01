@@ -6,7 +6,7 @@ Tudo estático: nada aqui anima (regra do elemento decorativo contínuo).
 import math
 from pathlib import Path
 
-OUT = Path(__file__).resolve().parent.parent / "site" / "svg"
+OUT = Path(__file__).resolve().parent.parent / "design" / "legacy-svg"  # não publicado: substituído pelas imagens geradas
 OUT.mkdir(parents=True, exist_ok=True)
 
 

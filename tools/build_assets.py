@@ -39,13 +39,15 @@ def key(path, T=40, lo=.06, pad=8):
     return out.crop((max(0, x0 - pad), max(0, y0 - pad), min(out.width, x1 + pad), min(out.height, y1 + pad)))
 
 
-def save(name, im, alpha=False):
+def save(name, im, alpha=False, small=(), q=80):
+    """<nome>-<w>.webp para cada degrau pequeno (celular) + -800 + <nome>.webp (largura nativa)."""
     files = []
-    for w, fn in ((800, f"{name}-800.webp"), (im.width, f"{name}.webp")):
+    steps = [(w, f"{name}-{w}.webp") for w in small if w < im.width]
+    for w, fn in steps + [(800, f"{name}-800.webp"), (im.width, f"{name}.webp")]:
         w = min(w, im.width)
         h = round(im.height * w / im.width)
         r = im.resize((w, h), Image.LANCZOS) if w != im.width else im
-        r.save(OUT / fn, "WEBP", quality=90, method=6, **({"exact": True} if alpha else {}))
+        r.save(OUT / fn, "WEBP", quality=q, method=6, **({"alpha_quality": 90 if q >= 80 else 60} if alpha else {}))
         files.append({"file": fn, "w": w, "h": h})
     manifest[name] = files
 
@@ -59,14 +61,14 @@ Image.fromarray(np.dstack([lg, a * 255]).astype(np.uint8), "RGBA").save(OUT / "l
 manifest["logo-yukusue"] = [{"file": "logo-yukusue-146.png", "w": 146, "h": 40}]
 
 # Cenas geradas (IMG-01..06)
-save("cena-hero", key(PL / "img-01-hero.png"), alpha=True)
-save("cena-pratos", key(PL / "img-02-pratos.png"), alpha=True)
-save("cena-drinks", key(PL / "img-03-drinks.png"), alpha=True)
-save("cena-ambiente", Image.open(PL / "img-04-ambiente.png").convert("RGB"))
-save("fita-agua", key(PL / "img-05-fita-agua.png", T=34, lo=.04, pad=0), alpha=True)
-save("bambu", key(PL / "img-06-bambu.png", T=45), alpha=True)
+save("cena-hero", key(PL / "img-01-hero.png"), alpha=True, small=(480,))
+save("cena-pratos", key(PL / "img-02-pratos.png"), alpha=True, small=(480,))
+save("cena-drinks", key(PL / "img-03-drinks.png"), alpha=True, small=(480,))
+save("cena-ambiente", Image.open(PL / "img-04-ambiente.png").convert("RGB"), small=(480,))
+save("fita-agua", key(PL / "img-05-fita-agua.png", T=34, lo=.04, pad=0), alpha=True, small=(300,), q=62)  # decorativo; 300px no celular (aparece com ~140px de largura)
+save("bambu", key(PL / "img-06-bambu.png", T=45), alpha=True, small=(480,), q=62)  # decorativo
 # Textura de gelo das letras do H1 (PLATE-01)
-save("plate-gelo", Image.open(PL / "Gemini_Generated_Image_s9ein8s9ein8s9ei.jpg").convert("RGB"))
+save("plate-gelo", Image.open(PL / "Gemini_Generated_Image_s9ein8s9ein8s9ei.jpg").convert("RGB"), q=62)  # textura das letras: decorativa
 
 (OUT / "manifest.json").write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 for k, v in manifest.items():

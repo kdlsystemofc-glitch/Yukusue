@@ -10,7 +10,7 @@ import { pathToFileURL } from "node:url";
 const modo = process.argv[2] || "base";
 const telas = [[2560,1440],[1920,1080],[1440,900],[1366,768],[1280,720],[1024,768],[768,1024],[430,932],[390,844],[360,740],[320,568],[844,390]];
 const out = resolve("screenshots/qa", modo); mkdirSync(out, { recursive: true });
-const url = pathToFileURL(resolve("site/index.html")).href;
+const url = pathToFileURL(resolve(process.env.QA_PAGE || "site/index.html")).href;
 const browser = await chromium.launch();
 let falhas = 0;
 
@@ -25,7 +25,7 @@ for (const [w, h] of telas) {
   const erros = [];
   page.on("console", m => { if (m.type() === "error") erros.push(m.text()); });
   page.on("pageerror", e => erros.push(e.message));
-  if (modo === "nofont") await page.route(/fonts\.(googleapis|gstatic)\.com/, r => r.abort());
+  if (modo === "nofont") await page.route(/\.woff2$|fonts\.(googleapis|gstatic)\.com/, r => r.abort()); // fontes locais bloqueadas: testa o fallback
   await page.goto(url, { waitUntil: "networkidle" });
   if (modo === "zoom") await page.addStyleTag({ content: "html{font-size:200%!important}" });
   await page.evaluate(async () => {

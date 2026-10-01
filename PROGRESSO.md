@@ -65,6 +65,11 @@ Commits: `design pronto` → `header pronta` → `hero pronta` → `pratos pront
 - Teste de repouso agora usa métrica perceptiva (desfoque de 1 px): DOM e estilos finais idênticos; o resto era antialiasing pós-composição.
 - Regressão verde (60 checagens) · QA verde · Lighthouse 72 / 73.
 
+## 2026-10-01 — Otimização (commit "otimizacao pronta") ✅
+- Estrutura nova: **código-fonte em `src/`**, build `node tools/build.mjs` → **`site/` (publicar só esta pasta)**. Detalhes em otimizacao-baseline.md e DEPLOY.md.
+- Lighthouse mobile 72 → **93** (deploy simulado) / 87 (servidor simples). Desktop 95.
+- Regressão de motion verde; QA verde nos 5 modos (zoom 200% corrigido).
+
 ## Falta
 - Receber do cliente: pendências do DESIGN.md §i (logo vetor, horário, link de pedido, fotos de salão/fachada, autorizações).
 - Opcional: AJ-01 e AJ-02 (versões por IA) para trocar o crop do ceviche e o retoque algorítmico do temaki.

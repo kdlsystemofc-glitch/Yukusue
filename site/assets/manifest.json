@@ -8,6 +8,11 @@
   ],
   "cena-hero": [
     {
+      "file": "cena-hero-480.webp",
+      "w": 480,
+      "h": 213
+    },
+    {
       "file": "cena-hero-800.webp",
       "w": 800,
       "h": 356
@@ -19,6 +24,11 @@
     }
   ],
   "cena-pratos": [
+    {
+      "file": "cena-pratos-480.webp",
+      "w": 480,
+      "h": 366
+    },
     {
       "file": "cena-pratos-800.webp",
       "w": 728,
@@ -32,6 +42,11 @@
   ],
   "cena-drinks": [
     {
+      "file": "cena-drinks-480.webp",
+      "w": 480,
+      "h": 331
+    },
+    {
       "file": "cena-drinks-800.webp",
       "w": 800,
       "h": 551
@@ -43,6 +58,11 @@
     }
   ],
   "cena-ambiente": [
+    {
+      "file": "cena-ambiente-480.webp",
+      "w": 480,
+      "h": 262
+    },
     {
       "file": "cena-ambiente-800.webp",
       "w": 800,
@@ -56,6 +76,11 @@
   ],
   "fita-agua": [
     {
+      "file": "fita-agua-300.webp",
+      "w": 300,
+      "h": 659
+    },
+    {
       "file": "fita-agua-800.webp",
       "w": 466,
       "h": 1024
@@ -67,6 +92,11 @@
     }
   ],
   "bambu": [
+    {
+      "file": "bambu-480.webp",
+      "w": 480,
+      "h": 466
+    },
     {
       "file": "bambu-800.webp",
       "w": 576,
