@@ -50,7 +50,16 @@ Commits: `design pronto` → `header pronta` → `hero pronta` → `pratos pront
 - Lighthouse por seção: 72 · 72 · 73 · 72 (orçamento ≥ 71).
 - Custo em headless: inconclusivo (variação da máquina maior que o efeito); precisa de medição em aparelho real.
 
+## 2026-10-01 — Motion · Fase 3: menu, pausa, coerência (tag motion-pronto) ✅
+- Botão "Pausar animações" (WCAG 2.2.2): fixo, 44 px, `aria-pressed`, preferência salva; só ícone no celular e em telas baixas; oculto no modo reduzido.
+- Menu: sublinhado no hover (CSS), âncoras suaves via Lenis. Rodapé: o site não tem rodapé; a seção escura cumpre o papel e tem a cascata de entrada.
+- Corrigido nesta fase: rolagem lateral causada pela aproximação do corredor (`overflow: hidden` no contêiner).
+- `motion-inventario.md`: todas as animações, orçamento (máx. 1 loop e 5 tweens simultâneos) e efeitos rejeitados com o motivo.
+- Vídeo: `screenshots/motion/video/pagina-1440.webm`.
+- Botão de pausa vem no HTML (estava entrando tarde e piorava o Speed Index 2,9 → 5,0 s); o bootstrap trata o clique antes do motion carregar.
+- Lighthouse final: 72 / 70 (2 rodadas; Speed Index oscilando entre 3,5 e 4,9 s). Linha de base 74.
+
 ## Falta
 - Receber do cliente: pendências do DESIGN.md §i (logo vetor, horário, link de pedido, fotos de salão/fachada, autorizações).
 - Opcional: AJ-01 e AJ-02 (versões por IA) para trocar o crop do ceviche e o retoque algorítmico do temaki.
-- Etapa 3: motion (DESIGN.md §f) — a fita e o bambu não se movem. Pedido do usuário: motion caprichado, "experiência fantástica".
+- Motion: testar em aparelho real (ver motion-inventario.md).

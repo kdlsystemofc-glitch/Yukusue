@@ -181,7 +181,7 @@
   isolation: isolate;
 }
 /* IMG-04: o lado direito da imagem já termina em preto -> funde com o fundo da seção */
-.s-local__foto { grid-column: 1 / 4; grid-row: 1; position: relative; }
+.s-local__foto { grid-column: 1 / 4; grid-row: 1; position: relative; overflow: hidden; /* contém a aproximação (scale) da imagem */ }
 .s-local__foto img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 0% 50%; }
 .s-local__foto::after {
   content: ""; position: absolute; inset: 0;

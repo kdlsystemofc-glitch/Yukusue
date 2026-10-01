@@ -210,6 +210,14 @@
     };
   };
 
+  /* ---------------------------------------------------------------- botão de pausa (WCAG 2.2.2)
+   * O botão está no HTML e o bootstrap cuida do desenho e do clique; aqui só o rótulo compacto. */
+  var btn = document.querySelector(".motion-toggle");
+  if (btn) {
+    var syncSmall = function () { btn.querySelector(".motion-toggle__txt").classList.toggle("sr-only", window.innerWidth < 768 || window.innerHeight < 500); };
+    window.addEventListener("resize", syncSmall); syncSmall();
+  }
+
   if (state.userPaused) setPaused(true, "user");
   sweep();
   root.dataset.motionReady = "1";

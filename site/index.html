@@ -104,6 +104,10 @@
       </div>
     </section>
   </main>
+  <!-- Botão de pausa no HTML (presente desde a 1ª pintura, sem mudança tardia na tela). Funciona antes e depois do motion carregar. -->
+  <button type="button" class="motion-toggle" aria-pressed="false">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z"/></svg><span class="motion-toggle__txt">Pausar animações</span>
+  </button>
   <!-- Bootstrap de motion: decide modo/qualidade e carrega GSAP/ScrollTrigger/Lenis (auto-hospedados)
        DEPOIS do load ou na primeira interação. Sem ele, o site é inteiro visível e estático. -->
   <script>
@@ -115,6 +119,22 @@
     var low = c.saveData || (n.deviceMemory && n.deviceMemory <= 4) || (n.hardwareConcurrency && n.hardwareConcurrency <= 4) || innerWidth < 768;
     d.dataset.motion = mode;
     d.dataset.quality = q.get("q") || (low ? "low" : "high");
+    var btn = document.querySelector(".motion-toggle");
+    if (mode === "reduced" || mode === "off") btn.remove();
+    else {
+      var draw = function (p) {
+        btn.setAttribute("aria-pressed", p ? "true" : "false");
+        btn.querySelector("path").setAttribute("d", p ? "M8 5v14l11-7z" : "M7 5h3.5v14H7zM13.5 5H17v14h-3.5z");
+        btn.querySelector(".motion-toggle__txt").textContent = p ? "Retomar animações" : "Pausar animações";
+      };
+      draw(mode === "paused");
+      btn.addEventListener("click", function () {
+        if (window.YMotion && window.YMotion.toggle) { window.YMotion.toggle(); return; }
+        mode = mode === "paused" ? "full" : "paused"; d.dataset.motion = mode; draw(mode === "paused"); // motion ainda não carregou
+        try { localStorage.setItem("y-motion", mode); } catch (e) {}
+      });
+      document.addEventListener("ymotion:pause", function (e) { draw(e.detail.paused); });
+    }
     var started = false, evs = ["pointerdown", "keydown", "wheel", "touchstart", "scroll"];
     function load(list) {
       if (!list.length) return;

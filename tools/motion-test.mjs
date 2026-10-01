@@ -144,6 +144,7 @@ for (const vp of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
           for (let k = 0; k <= 4; k++) { await rolarPara(p, y - 400 + (fim - y + 400) * k / 4); await pausa(350); } await pausa(900); }
         tag === "motion" ? await rolarPara(p, y - 400) : 0; await pausa(tag === "motion" ? 200 : 0); tag === "motion" ? await rolarPara(p, y) : await p.evaluate(y => scrollTo(0, y), y); }
       await pausa(tag === "motion" ? 1600 : 100);
+      await p.evaluate(() => { const b = document.querySelector(".motion-toggle"); if (b) b.style.visibility = "hidden"; }); // controle fixo não faz parte da seção
       if (tag === "motion") await p.evaluate(sel => { // isola a seção: parallax de vizinhas que transbordam volta a 0
         const sec = document.querySelector(sel);
         window.YMotion.parallax.forEach(P => { if (!sec.contains(P.el)) { P.st.disable(false); window.gsap.set(P.el, { yPercent: 0 }); } }); }, sel);
